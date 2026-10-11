@@ -1,4 +1,4 @@
-from odoo import fields, models, _
+from odoo import fields, models, api, _
 from odoo.exceptions import UserError
 from odoo.addons.tangerine_delivery_base.settings.utils import get_route_api, notification
 from odoo.addons.tangerine_delivery_base.api.connection import Connection
@@ -21,8 +21,13 @@ class LLMService(models.Model):
     description = fields.Char(string='Description')
     special_service_ids = fields.One2many('lalamove.special.service', 'service_id')
 
+    @api.depends('code', 'name')
+    def _compute_display_name(self):
+        for rec in self:
+            rec.display_name = f'[{rec.code}] - {rec.name}'
+
     _sql_constraints = [
-        ('uniq_code', 'unique(code)', 'Service must be unique')
+        ('uniq_code', 'unique (code)', 'Service must be unique'),
     ]
 
     @staticmethod
@@ -90,7 +95,12 @@ class LLMSpecialService(models.Model):
     code = fields.Char(string='Code', required=True)
     description = fields.Char(string='Description')
 
+    @api.depends('code', 'name')
+    def _compute_display_name(self):
+        for rec in self:
+            rec.display_name = f'[{rec.code}] - {rec.name}'
+
     _sql_constraints = [
-        ('uniq_code', 'unique(service_id,code)', 'Special service must be unique')
+        ('uniq_code', 'unique (service_id, code)', 'Special service must be unique'),
     ]
 
