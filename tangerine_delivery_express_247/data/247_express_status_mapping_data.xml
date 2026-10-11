@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data noupdate="1">
+        <!-- 247 Express: DATIEPNHAN → Confirmed -->
+        <record id="247_express_mapping_datiepnhan" model="delivery.status.mapping">
+            <field name="provider_id" ref="tangerine_delivery_express_247.tangerine_delivery_express_247_provider"/>
+            <field name="carrier_status_id" ref="tangerine_delivery_express_247.247_express_status_datiepnhan"/>
+            <field name="standard_status_id" ref="tangerine_delivery_base.standard_status_confirmed"/>
+            <field name="sequence">10</field>
+        </record>
+
+        <!-- 247 Express: DALAYHANG → Picked Up -->
+        <record id="247_express_mapping_dalayhang" model="delivery.status.mapping">
+            <field name="provider_id" ref="tangerine_delivery_express_247.tangerine_delivery_express_247_provider"/>
+            <field name="carrier_status_id" ref="tangerine_delivery_express_247.247_express_status_dalayhang"/>
+            <field name="standard_status_id" ref="tangerine_delivery_base.standard_status_picked_up"/>
+            <field name="sequence">20</field>
+        </record>
+
+        <!-- 247 Express: DANGVANCHUYEN → In Transit -->
+        <record id="247_express_mapping_dangvanchuyen" model="delivery.status.mapping">
+            <field name="provider_id" ref="tangerine_delivery_express_247.tangerine_delivery_express_247_provider"/>
+            <field name="carrier_status_id" ref="tangerine_delivery_express_247.247_express_status_dangvanchuyen"/>
+            <field name="standard_status_id" ref="tangerine_delivery_base.standard_status_in_transit"/>
+            <field name="sequence">30</field>
+        </record>
+
+        <!-- 247 Express: DANGDIPHAT → Delivering -->
+        <record id="247_express_mapping_dangdiphat" model="delivery.status.mapping">
+            <field name="provider_id" ref="tangerine_delivery_express_247.tangerine_delivery_express_247_provider"/>
+            <field name="carrier_status_id" ref="tangerine_delivery_express_247.247_express_status_dangdiphat"/>
+            <field name="standard_status_id" ref="tangerine_delivery_base.standard_status_delivering"/>
+            <field name="sequence">40</field>
+        </record>
+
+        <!-- 247 Express: PHATTHANHCONG → Delivered -->
+        <record id="247_express_mapping_phatthanhcong" model="delivery.status.mapping">
+            <field name="provider_id" ref="tangerine_delivery_express_247.tangerine_delivery_express_247_provider"/>
+            <field name="carrier_status_id" ref="tangerine_delivery_express_247.247_express_status_phatthanhcong"/>
+            <field name="standard_status_id" ref="tangerine_delivery_base.standard_status_delivered"/>
+            <field name="sequence">50</field>
+        </record>
+
+        <!-- 247 Express: CHOXULY → Failed -->
+        <record id="247_express_mapping_choxuly" model="delivery.status.mapping">
+            <field name="provider_id" ref="tangerine_delivery_express_247.tangerine_delivery_express_247_provider"/>
+            <field name="carrier_status_id" ref="tangerine_delivery_express_247.247_express_status_choxuly"/>
+            <field name="standard_status_id" ref="tangerine_delivery_base.standard_status_failed"/>
+            <field name="sequence">60</field>
+        </record>
+
+        <!-- 247 Express: CHOCHUYENHOAN → Returning -->
+        <record id="247_express_mapping_chochuyenhoan" model="delivery.status.mapping">
+            <field name="provider_id" ref="tangerine_delivery_express_247.tangerine_delivery_express_247_provider"/>
+            <field name="carrier_status_id" ref="tangerine_delivery_express_247.247_express_status_chochuyenhoan"/>
+            <field name="standard_status_id" ref="tangerine_delivery_base.standard_status_returning"/>
+            <field name="sequence">70</field>
+        </record>
+
+        <!-- 247 Express: DACHUYENHOAN → Returned -->
+        <record id="247_express_mapping_dachuyenhoan" model="delivery.status.mapping">
+            <field name="provider_id" ref="tangerine_delivery_express_247.tangerine_delivery_express_247_provider"/>
+            <field name="carrier_status_id" ref="tangerine_delivery_express_247.247_express_status_dachuyenhoan"/>
+            <field name="standard_status_id" ref="tangerine_delivery_base.standard_status_returned"/>
+            <field name="sequence">80</field>
+        </record>
+
+        <!-- 247 Express: THATLAC → Failed -->
+        <record id="247_express_mapping_thatlac" model="delivery.status.mapping">
+            <field name="provider_id" ref="tangerine_delivery_express_247.tangerine_delivery_express_247_provider"/>
+            <field name="carrier_status_id" ref="tangerine_delivery_express_247.247_express_status_thatlac"/>
+            <field name="standard_status_id" ref="tangerine_delivery_base.standard_status_failed"/>
+            <field name="sequence">90</field>
+        </record>
+
+        <!-- 247 Express: HUY → Cancelled -->
+        <record id="247_express_mapping_huy" model="delivery.status.mapping">
+            <field name="provider_id" ref="tangerine_delivery_express_247.tangerine_delivery_express_247_provider"/>
+            <field name="carrier_status_id" ref="tangerine_delivery_express_247.247_express_status_huy"/>
+            <field name="standard_status_id" ref="tangerine_delivery_base.standard_status_cancelled"/>
+            <field name="sequence">100</field>
+        </record>
+
+        <!-- 247 Express: TICHTHU → Failed -->
+        <record id="247_express_mapping_tichthu" model="delivery.status.mapping">
+            <field name="provider_id" ref="tangerine_delivery_express_247.tangerine_delivery_express_247_provider"/>
+            <field name="carrier_status_id" ref="tangerine_delivery_express_247.247_express_status_tichthu"/>
+            <field name="standard_status_id" ref="tangerine_delivery_base.standard_status_failed"/>
+            <field name="sequence">110</field>
+        </record>
+    </data>
+</odoo>

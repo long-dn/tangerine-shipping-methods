@@ -64,7 +64,7 @@
             <field name="description">Đơn hàng bị thất lạc.</field>
         </record>
 
-        <record model="delivery.status" id="247_express_status_thatlac">
+        <record model="delivery.status" id="247_express_status_huy">
             <field name="provider_id" ref="tangerine_delivery_express_247.tangerine_delivery_express_247_provider" />
             <field name="name">Đã huỷ</field>
             <field name="code">HUY</field>
