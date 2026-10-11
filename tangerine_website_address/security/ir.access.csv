@@ -1,0 +1,3 @@
+id,name,model_id,group_id/id,operation,domain
+access_res_country_ward_portal,access_res_country_ward_portal_user,res.country.ward,base.group_portal,r,
+access_res_country_ward_public,access_res_country_ward_public,res.country.ward,base.group_public,r,

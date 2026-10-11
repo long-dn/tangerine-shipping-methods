@@ -6,11 +6,11 @@
     'website': 'https://github.com/long-dn',
     'license': 'LGPL-3',
     'category': 'Extra Tools',
-    'version': '1.0.0',
+    'version': '20.0.1.0.0',
     'support': 'odoo.tangerine@gmail.com',
     'depends': ['web', 'portal', 'website_sale', 'tangerine_address_base'],
     'data': [
-        'security/ir.model.access.csv',
+        'security/ir.access.csv',
         'data/ir_model_data.xml',
         'views/portal_templates.xml',
     ],

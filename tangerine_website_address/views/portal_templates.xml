@@ -2,17 +2,18 @@
 <odoo>
     <template id="l18n_vn_address_form_fields" name="l18n_vn_address_form_fields" inherit_id="portal.address_form_fields">
         <xpath expr="//div[@id='div_state']" position="after">
+            <t t-set="state_wards" t-value="state.ward_ids if state and country.code == 'VN' else []"/>
             <div id="div_ward" class="col-lg-6 mb-2" t-att-style="not state_wards and 'display: none'">
                 <label class="col-form-label label-optional" for="o_ward_id">
                     Ward / Commune
                 </label>
-                <select id="o_ward_id" name="ward_id" class="form-select">
+                <select id="o_ward_id" name="ward_id" class="form-select" t-att-disabled="not state_wards and 'disabled' or None">
                     <option value="">Ward / Commune...</option>
                     <option
-                        t-foreach="state_wards or []"
+                        t-foreach="state_wards"
                         t-as="w"
                         t-att-value="w.id"
-                        t-att-selected="w.id == (int(ward_id) if ward_id else partner_sudo.ward_id.id if partner_sudo else False)"
+                        t-att-selected="partner_sudo and w.id == partner_sudo.ward_id.id"
                         t-out="w.name"
                     />
                 </select>
