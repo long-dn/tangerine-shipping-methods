@@ -129,7 +129,7 @@ class CodReconciliation(models.Model):
 
     notes = fields.Html(string='Notes')
 
-    @api.model
+    @api.model_create_multi
     def create(self, vals_list):
         for vals in vals_list:
             if vals.get('name', _('New')) == _('New'):
