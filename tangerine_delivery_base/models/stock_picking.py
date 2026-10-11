@@ -19,6 +19,19 @@ class StockPicking(models.Model):
     promo_code = fields.Char(string='Promo Code')
     delivery_status_id = fields.Many2one('delivery.status', string='Delivery Status', readonly=True)
     delivery_status_code = fields.Char(related='delivery_status_id.code')
+    mapped_delivery_status_id = fields.Many2one(
+        'delivery.standard.status',
+        string='Mapped Status',
+        compute='_compute_mapped_delivery_status_id',
+    )
+
+    @api.depends('delivery_status_id')
+    def _compute_mapped_delivery_status_id(self):
+        for rec in self:
+            mapped = rec.carrier_id.get_mapped_standard_status(
+                rec.delivery_status_id
+            ) if rec.carrier_id else self.env['delivery.standard.status']
+            rec.mapped_delivery_status_id = mapped.id if mapped else False
 
     @api.onchange('cash_on_delivery')
     def _on_change_cash_on_delivery(self):
@@ -34,5 +47,3 @@ class StockPicking(models.Model):
             return getattr(self, f'{self.delivery_type}_print_order')()
         else:
             raise UserError(_(f'The carrier {self.carrier_id.name} not support future print order'))
-
-
