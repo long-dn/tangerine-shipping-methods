@@ -44,7 +44,7 @@ class ChooseDeliveryCarrier(models.TransientModel):
                 'promo_code': self.promo_code
             })
             self.env.context = context
-        return super(ChooseDeliveryCarrier, self)._get_shipment_rate()
+        return super(ChooseDeliveryCarrier, self)._get_delivery_rate()
 
     def button_confirm(self):
         if self.carrier_id.delivery_type == settings.ahamove_code.value:
