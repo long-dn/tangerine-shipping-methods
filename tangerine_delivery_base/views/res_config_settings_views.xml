@@ -6,7 +6,7 @@
         <field name="inherit_id" ref="base.res_config_settings_view_form"/>
         <field name="arch" type="xml">
             <xpath expr="//form" position="inside">
-                <app data-string="Delivery Integration" string="Delivery Integration" name="delivery_settings" logo="/tangerine_delivery_base/static/description/icon.png">
+                <app data-string="Delivery Integration" string="Delivery Integration" name="tangerine_delivery_base" logo="/tangerine_delivery_base/static/description/icon.png">
                     <block title="Webhook Logs" name="webhook_log_setting">
                         <setting string="Auto-delete Webhook Logs"
                                  help="Automatically delete webhook log entries older than the specified number of days. Set 0 to keep logs indefinitely.">
