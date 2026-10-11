@@ -97,7 +97,7 @@ class ProviderGrab(models.Model):
                 raise UserError(_('Please install the module Partners Geolocation'))
             lat, lng = self._grab_validate_coordinates(contact)
             return {
-                'address': contact.shipping_address_international,
+                'address': contact.shipping_address,
                 'coordinates': {
                     'latitude': lat,
                     'longitude': lng
@@ -106,7 +106,7 @@ class ProviderGrab(models.Model):
         if not contact.state_id.grab_city_code:
             raise ValidationError(_(f'The Grab city code field of contact {contact.name} is required'))
         return {
-            'address': contact.shipping_address_international,
+            'address': contact.shipping_address,
             'cityCode': contact.state_id.grab_city_code,
             'coordinates': {}
         }
