@@ -1,0 +1,4 @@
+id,name,model_id,group_id/id,operation,domain
+access_llm_service,access_llm_service,lalamove.service,base.group_user,crud,
+access_llm_special_service,access_llm_special_service,lalamove.special.service,base.group_user,crud,
+access_llm_regional,access_llm_regional,lalamove.regional,base.group_user,crud,

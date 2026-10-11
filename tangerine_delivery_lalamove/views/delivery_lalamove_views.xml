@@ -15,7 +15,7 @@
                         <field name="domain"/>
                         <button name="action_test_connection"
                                 string="Test Connection"
-                                icon="fa-plug"
+                                icon="power"
                                 type="object"
                         />
                     </div>
@@ -42,16 +42,15 @@
                         <field name="default_lalamove_service_id"/>
                         <button name="action_lalamove_sync_cities"
                                 string="Service Synchronous"
-                                icon="fa-arrow-right"
+                                icon="arrow_forward"
                                 type="object"
                         />
                     </div>
                     <field name="default_lalamove_special_service_ids"
-                           domain="lalamove_special_service_domain"
+                           domain="[('service_id', '=?', default_lalamove_service_id)]"
                            widget="many2many_tags"
                     />
                     <field name="default_lalamove_use_coordinates" widget="boolean_toggle"/>
-                    <field name="lalamove_special_service_domain" invisible="1"/>
                 </group>
             </xpath>
             <xpath expr="//group[@name='delivery_webhook']" position="before">
@@ -66,19 +65,19 @@
                         <field name="is_use_authentication" widget="boolean_toggle"/>
                         <button name="action_generate_access_token"
                                 string="Generate Access Token"
-                                icon="oi-arrow-right"
+                                icon="arrow_forward"
                                 type="object"
                                 invisible="not is_use_authentication"
                         />
                         <button name="action_lalamove_update_webhook"
                                 string="Register Webhook"
-                                icon="oi-arrow-right"
+                                icon="arrow_forward"
                                 type="object"
                                 invisible="is_webhook_registered or delivery_type != 'lalamove'"
                         />
                         <button name="action_lalamove_update_webhook"
                                 string="Update Webhook"
-                                icon="oi-arrow-right"
+                                icon="arrow_forward"
                                 type="object"
                                 invisible="not is_webhook_registered or delivery_type != 'lalamove'"
                         />

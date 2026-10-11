@@ -29,7 +29,6 @@ class ProviderGrab(models.Model):
     default_lalamove_regional_id = fields.Many2one('lalamove.regional', string='Regional')
     default_lalamove_service_id = fields.Many2one('lalamove.service', string='Vehicle Type')
     default_lalamove_use_coordinates = fields.Boolean(string='Coordinates Use', default=False)
-    lalamove_special_service_domain = fields.Binary(default=[], store=False)
     default_lalamove_special_service_ids = fields.Many2many(
         'lalamove.special.service',
         'lalamove_carrier_service_rel',
@@ -49,12 +48,6 @@ class ProviderGrab(models.Model):
         if self.default_lalamove_special_service_ids:
             ctx['llm_special_service'] = [s.code for s in self.default_lalamove_special_service_ids]
         return ctx
-
-    @api.onchange('default_lalamove_service_id')
-    def _onchange_default_lalamove_service_id(self):
-        for rec in self:
-            if rec.default_lalamove_service_id:
-                rec.lalamove_special_service_domain = [('service_id', '=', rec.default_lalamove_service_id.id)]
 
     def action_lalamove_sync_cities(self):
         self.env['lalamove.service'].llm_service_synchronous()
