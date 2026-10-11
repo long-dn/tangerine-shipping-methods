@@ -6,6 +6,8 @@ from ..static.utils import vietnamese_handler as vh
 class CountryState(models.Model):
     _inherit = 'res.country.state'
 
+    district_ids = fields.One2many('res.country.district', 'state_id')
+
     external_code = fields.Char(
         string='External Code',
         help="A code used for external systems, such as shipping providers.",
@@ -20,8 +22,18 @@ class CountryState(models.Model):
         default='province',
         help="Type of the state, province, or city."
     )
+    state_name_without_accent = fields.Char(
+        string='State Name Without Accent',
+        compute='_compute_state_name_without_accent',
+        store=True,
+        help="State name without accent for easier searching."
+    )
     active = fields.Boolean(default=True)
-    ward_ids = fields.One2many('res.country.ward', 'state_id')
+    ward_ids = fields.One2many(
+        'res.country.ward',
+        'state_id',
+        string='Ward/Commune'
+    )
 
     @api.constrains('external_code')
     def _check_external_code(self):
@@ -56,3 +68,8 @@ class CountryState(models.Model):
                     rec.display_name = f'{state_label} {rec.name}'
                 else:
                     rec.display_name = f'{vh.no_accent_vietnamese(rec.name)} {state_label}'
+
+    @api.depends('name')
+    def _compute_state_name_without_accent(self):
+        for rec in self:
+            rec.state_name_without_accent = vh.no_accent_vietnamese(rec.name)

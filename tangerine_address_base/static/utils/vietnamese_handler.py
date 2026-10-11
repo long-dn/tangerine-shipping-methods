@@ -2,6 +2,8 @@
 import re
 
 def no_accent_vietnamese(s):
+    if not isinstance(s, (str, bytes)):
+        return s
     s = re.sub(r'[àáạảãâầấậẩẫăằắặẳẵ]', 'a', s)
     s = re.sub(r'[ÀÁẠẢÃĂẰẮẶẲẴÂẦẤẬẨẪ]', 'A', s)
     s = re.sub(r'[èéẹẻẽêềếệểễ]', 'e', s)

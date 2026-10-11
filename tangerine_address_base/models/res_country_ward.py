@@ -4,10 +4,19 @@ from ..static.utils import vietnamese_handler as vh
 
 class Ward(models.Model):
     _name = 'res.country.ward'
-    _description = 'Ward'
+    _description = 'ward'
+    _order = 'name'
 
-    code = fields.Char(string='Ward Code', readonly=True, required=True)
-    name = fields.Char(string='Ward name', required=True)
+    code = fields.Char(string='Ward Code')
+    name = fields.Char(string='Ward name')
+
+    # outdated
+    district_id = fields.Many2one(
+        'res.country.district',
+        string='District',
+        domain="[('state_id', '=', state_id)]"
+    )
+
     state_id = fields.Many2one(
         'res.country.state',
         string='State',
@@ -21,8 +30,14 @@ class Ward(models.Model):
         ],
         string='Ward Type',
         default='ward',
-        required = True,
+        required=True,
         help="Type of the ward, commune."
+    )
+    ward_name_without_accent = fields.Char(
+        string='Ward Name Without Accent',
+        compute='_compute_ward_name_without_accent',
+        store=True,
+        help="Ward name without accent for easier searching."
     )
     active = fields.Boolean(default=True)
 
@@ -44,3 +59,8 @@ class Ward(models.Model):
                 rec.display_name = f'{ward_label} {rec.name}'
             else:
                 rec.display_name = f'{vh.no_accent_vietnamese(rec.name)} {ward_label}'
+
+    @api.depends('name')
+    def _compute_ward_name_without_accent(self):
+        for rec in self:
+            rec.ward_name_without_accent = vh.no_accent_vietnamese(rec.name) if rec.name else False

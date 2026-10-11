@@ -4,10 +4,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 18.0+e-20250110\n"
+"Project-Id-Version: Odoo Server 19.0+e-20250918\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-08-01 06:38+0000\n"
-"PO-Revision-Date: 2025-08-01 06:38+0000\n"
+"POT-Creation-Date: 2025-11-20 15:54+0000\n"
+"PO-Revision-Date: 2025-11-20 15:54+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -18,7 +18,7 @@ msgstr ""
 #. module: tangerine_address_base
 #: model:ir.model.fields,help:tangerine_address_base.field_res_country_state__external_code
 msgid "A code used for external systems, such as shipping providers."
-msgstr "Mã được sử dụng cho các hệ thống bên ngoài, chẳng hạn như nhà cung cấp dịch vụ vận chuyển."
+msgstr "Một mã được sử dụng cho các hệ thống bên ngoài, chẳng hạn như nhà cung cấp dịch vụ vận chuyển."
 
 #. module: tangerine_address_base
 #: model:ir.model.fields,field_description:tangerine_address_base.field_res_country_state__active
@@ -40,6 +40,11 @@ msgid "City"
 msgstr "Thành phố"
 
 #. module: tangerine_address_base
+#: model:ir.model.fields,field_description:tangerine_address_base.field_res_country_district__code
+msgid "Code"
+msgstr "Mã"
+
+#. module: tangerine_address_base
 #: model:ir.model.fields.selection,name:tangerine_address_base.selection__res_country_ward__ward_type__commune
 msgid "Commune"
 msgstr "Xã"
@@ -55,6 +60,7 @@ msgid "Contact"
 msgstr "Liên hệ"
 
 #. module: tangerine_address_base
+#: model:ir.model.fields,field_description:tangerine_address_base.field_res_country_district__country_id
 #: model_terms:ir.ui.view,arch_db:tangerine_address_base.res_company_form_view_inherit_by_tangerine
 #: model_terms:ir.ui.view,arch_db:tangerine_address_base.res_partner_form_view_inherit_by_tangerine
 msgid "Country"
@@ -63,22 +69,54 @@ msgstr "Quốc gia"
 #. module: tangerine_address_base
 #: model:ir.model,name:tangerine_address_base.model_res_country_state
 msgid "Country state"
-msgstr "Tỉnh/TP/Bang"
+msgstr "Tỉnh/Thành"
 
 #. module: tangerine_address_base
+#: model:ir.model,website_form_label:tangerine_address_base.model_res_partner
+msgid "Create a Customer"
+msgstr "Tạo một khách hàng"
+
+#. module: tangerine_address_base
+#: model:ir.model.fields,field_description:tangerine_address_base.field_res_country_district__create_uid
 #: model:ir.model.fields,field_description:tangerine_address_base.field_res_country_ward__create_uid
 msgid "Created by"
-msgstr "Được tạo bởi"
+msgstr "Tạo bởi"
 
 #. module: tangerine_address_base
+#: model:ir.model.fields,field_description:tangerine_address_base.field_res_country_district__create_date
 #: model:ir.model.fields,field_description:tangerine_address_base.field_res_country_ward__create_date
 msgid "Created on"
-msgstr "Được tạo vào"
+msgstr "Tạo vào"
 
 #. module: tangerine_address_base
+#: model:ir.model.fields,field_description:tangerine_address_base.field_res_company__display_name
+#: model:ir.model.fields,field_description:tangerine_address_base.field_res_country_district__display_name
+#: model:ir.model.fields,field_description:tangerine_address_base.field_res_country_state__display_name
 #: model:ir.model.fields,field_description:tangerine_address_base.field_res_country_ward__display_name
+#: model:ir.model.fields,field_description:tangerine_address_base.field_res_partner__display_name
 msgid "Display Name"
-msgstr "Hiển thị tên"
+msgstr "Tên hiển thị"
+
+#. module: tangerine_address_base
+#: model:ir.model,name:tangerine_address_base.model_res_country_district
+#: model:ir.model.fields,field_description:tangerine_address_base.field_res_company__district_id
+#: model:ir.model.fields,field_description:tangerine_address_base.field_res_country_state__district_ids
+#: model:ir.model.fields,field_description:tangerine_address_base.field_res_country_ward__district_id
+#: model:ir.model.fields,field_description:tangerine_address_base.field_res_partner__district_id
+#: model:ir.model.fields,field_description:tangerine_address_base.field_res_users__district_id
+#: model_terms:ir.ui.view,arch_db:tangerine_address_base.res_country_district_tree_view
+msgid "District"
+msgstr "Quận/Huyện"
+
+#. module: tangerine_address_base
+#: model:ir.model.fields,field_description:tangerine_address_base.field_res_country_district__name
+msgid "District name"
+msgstr "Tên quận/huyện"
+
+#. module: tangerine_address_base
+#: model:ir.actions.act_window,name:tangerine_address_base.res_country_district_action
+msgid "Districts"
+msgstr "Quận/Huyện"
 
 #. module: tangerine_address_base
 #: model:ir.model.fields,field_description:tangerine_address_base.field_res_country_state__external_code
@@ -89,7 +127,7 @@ msgstr "Mã bên ngoài"
 #. odoo-python
 #: code:addons/tangerine_address_base/models/res_country_state.py:0
 msgid "External code is required for Vietnam states."
-msgstr "Mã bên ngoài là bắt buộc đối với các Tỉnh/Thành của Việt Nam."
+msgstr "Mã bên ngoài là bắt buộc đối với các tỉnh/thành phố Việt Nam."
 
 #. module: tangerine_address_base
 #: model_terms:ir.ui.view,arch_db:tangerine_address_base.res_partner_form_view_inherit_by_tangerine
@@ -99,10 +137,19 @@ msgstr "Địa chỉ đầy đủ"
 #. module: tangerine_address_base
 #: model_terms:ir.ui.view,arch_db:tangerine_address_base.res_country_ward_search_view
 msgid "Group by State"
-msgstr "Nhóm theo Tỉnh/Thành"
+msgstr "Nhóm theo Tỉnh/TP"
 
 #. module: tangerine_address_base
+#: model:ir.model.fields.selection,name:tangerine_address_base.selection__res_country_district__type__1
+msgid "Huyện"
+msgstr "Huyện"
+
+#. module: tangerine_address_base
+#: model:ir.model.fields,field_description:tangerine_address_base.field_res_company__id
+#: model:ir.model.fields,field_description:tangerine_address_base.field_res_country_district__id
+#: model:ir.model.fields,field_description:tangerine_address_base.field_res_country_state__id
 #: model:ir.model.fields,field_description:tangerine_address_base.field_res_country_ward__id
+#: model:ir.model.fields,field_description:tangerine_address_base.field_res_partner__id
 msgid "ID"
 msgstr ""
 
@@ -112,19 +159,26 @@ msgid "Inactive"
 msgstr "Không hoạt động"
 
 #. module: tangerine_address_base
+#: model:ir.model.fields,field_description:tangerine_address_base.field_res_country_district__write_uid
 #: model:ir.model.fields,field_description:tangerine_address_base.field_res_country_ward__write_uid
 msgid "Last Updated by"
-msgstr "Cập nhật lần cuối bởi"
+msgstr "Lần cập nhật cuối bởi"
 
 #. module: tangerine_address_base
+#: model:ir.model.fields,field_description:tangerine_address_base.field_res_country_district__write_date
 #: model:ir.model.fields,field_description:tangerine_address_base.field_res_country_ward__write_date
 msgid "Last Updated on"
-msgstr "Cập nhật lần cuối vào"
+msgstr "Lần cập nhật cuối vào"
 
 #. module: tangerine_address_base
 #: model:ir.model.fields.selection,name:tangerine_address_base.selection__res_country_state__state_type__province
 msgid "Province"
 msgstr "Tỉnh"
+
+#. module: tangerine_address_base
+#: model:ir.model.fields.selection,name:tangerine_address_base.selection__res_country_district__type__0
+msgid "Quận"
+msgstr ""
 
 #. module: tangerine_address_base
 #: model:ir.model.fields,field_description:tangerine_address_base.field_res_partner__shipping_address
@@ -133,27 +187,49 @@ msgid "Shipping Address"
 msgstr "Địa chỉ giao hàng"
 
 #. module: tangerine_address_base
-#: model:ir.model.fields.selection,name:tangerine_address_base.selection__res_country_ward__ward_type__special_zone
-msgid "Special Zone"
-msgstr "Đặt khu"
+#: model:ir.model.fields,field_description:tangerine_address_base.field_res_country_district__slug
+msgid "Slug"
+msgstr ""
 
 #. module: tangerine_address_base
+#: model:ir.model.fields.selection,name:tangerine_address_base.selection__res_country_ward__ward_type__special_zone
+msgid "Special Zone"
+msgstr "Đặc khu"
+
+#. module: tangerine_address_base
+#: model:ir.model.fields,field_description:tangerine_address_base.field_res_country_district__state_id
+#: model:ir.model.fields,field_description:tangerine_address_base.field_res_country_ward__state_id
 #: model_terms:ir.ui.view,arch_db:tangerine_address_base.res_company_form_view_inherit_by_tangerine
 #: model_terms:ir.ui.view,arch_db:tangerine_address_base.res_partner_form_view_inherit_by_tangerine
-#: model:ir.model.fields,field_description:tangerine_address_base.field_res_country_ward__state_id
 msgid "State"
 msgstr "Tỉnh/Thành"
 
 #. module: tangerine_address_base
+#: model:ir.model.fields,field_description:tangerine_address_base.field_res_country_state__state_name_without_accent
+msgid "State Name Without Accent"
+msgstr "Tên Tỉnh/TP Không Dấu"
+
+#. module: tangerine_address_base
 #: model:ir.model.fields,field_description:tangerine_address_base.field_res_country_state__state_type
 msgid "State Type"
-msgstr "Loại"
+msgstr "Loại Tỉnh/TP"
+
+#. module: tangerine_address_base
+#: model:ir.model.fields,help:tangerine_address_base.field_res_country_state__state_name_without_accent
+msgid "State name without accent for easier searching."
+msgstr "Tên Tỉnh/TP không dấu để dễ dàng tìm kiếm."
 
 #. module: tangerine_address_base
 #. odoo-python
 #: code:addons/tangerine_address_base/models/res_country_state.py:0
 msgid "State type must be either \"province\" or \"city\" for Vietnam states."
-msgstr "Loại Tỉnh/Thành phải là \"tỉnh\" hoặc \"thành phố\" đối với các Tỉnh/Thành của Việt Nam."
+msgstr "Loại Tỉnh/TP phải là \"tỉnh\" hoặc \"thành phố\" đối với các Tỉnh/TP Việt Nam."
+
+#. module: tangerine_address_base
+#: model_terms:ir.ui.view,arch_db:tangerine_address_base.res_company_form_view_inherit_by_tangerine
+#: model_terms:ir.ui.view,arch_db:tangerine_address_base.res_partner_form_view_inherit_by_tangerine
+msgid "Street"
+msgstr "Đường"
 
 #. module: tangerine_address_base
 #: model_terms:ir.ui.view,arch_db:tangerine_address_base.res_company_form_view_inherit_by_tangerine
@@ -165,70 +241,93 @@ msgstr "Đường 2..."
 #: model_terms:ir.ui.view,arch_db:tangerine_address_base.res_company_form_view_inherit_by_tangerine
 #: model_terms:ir.ui.view,arch_db:tangerine_address_base.res_partner_form_view_inherit_by_tangerine
 msgid "Street..."
-msgstr "Đường"
+msgstr "Đường..."
 
 #. module: tangerine_address_base
-#: model:ir.model.constraint,message:tangerine_address_base.constraint_res_country_ward_name_code_uniq
+#: model:ir.model.constraint,message:tangerine_address_base.constraint_res_country_ward_unique_name_code
 msgid "The code of the ward must be unique by state!"
-msgstr "Mã của phường/xã phải là duy nhất theo tỉnh/thành phố!"
+msgstr "Mã của xã phải là duy nhất theo tỉnh/thành!"
+
+#. module: tangerine_address_base
+#: model:ir.model.fields.selection,name:tangerine_address_base.selection__res_country_district__type__3
+msgid "Thành Phố"
+msgstr ""
+
+#. module: tangerine_address_base
+#: model:ir.model.fields.selection,name:tangerine_address_base.selection__res_country_district__type__2
+msgid "Thị xã"
+msgstr ""
+
+#. module: tangerine_address_base
+#: model:ir.model.fields,field_description:tangerine_address_base.field_res_country_district__type
+msgid "Type"
+msgstr "Loại"
 
 #. module: tangerine_address_base
 #: model:ir.model.fields,help:tangerine_address_base.field_res_country_state__state_type
 msgid "Type of the state, province, or city."
-msgstr "Loại của tỉnh, thành phố hoặc đô thị."
+msgstr "Loại của tỉnh/thành."
 
 #. module: tangerine_address_base
 #: model:ir.model.fields,help:tangerine_address_base.field_res_country_ward__ward_type
 msgid "Type of the ward, commune."
-msgstr "Loại của phường/xã."
+msgstr "Loại của xã/phường."
 
 #. module: tangerine_address_base
-#: model:ir.model.fields,field_description:tangerine_address_base.field_res_partner__vn_address_complete
-#: model:ir.model.fields,field_description:tangerine_address_base.field_res_users__vn_address_complete
-msgid "Vn Address Complete"
-msgstr "Địa chỉ Việt Nam đầy đủ"
-
-#. module: tangerine_address_base
-#: model:ir.model,name:tangerine_address_base.model_res_country_ward
-#: model:ir.model.fields,field_description:tangerine_address_base.field_res_company__ward_id
-#: model:ir.model.fields,field_description:tangerine_address_base.field_res_country_state__ward_ids
-#: model:ir.model.fields,field_description:tangerine_address_base.field_res_partner__ward_id
-#: model:ir.model.fields,field_description:tangerine_address_base.field_res_users__ward_id
+#: model:ir.model.fields,field_description:tangerine_address_base.field_res_country_district__ward_ids
+#: model:ir.model.fields.selection,name:tangerine_address_base.selection__res_country_ward__ward_type__ward
 #: model_terms:ir.ui.view,arch_db:tangerine_address_base.res_company_form_view_inherit_by_tangerine
 #: model_terms:ir.ui.view,arch_db:tangerine_address_base.res_country_ward_tree_view
 #: model_terms:ir.ui.view,arch_db:tangerine_address_base.res_partner_form_view_inherit_by_tangerine
 msgid "Ward"
-msgstr "Phường/Xã"
-
-#. module: tangerine_address_base
-#: model:ir.model.fields.selection,name:tangerine_address_base.selection__res_country_ward__ward_type__ward
-msgid "Ward"
 msgstr "Phường"
-
 
 #. module: tangerine_address_base
 #: model:ir.model.fields,field_description:tangerine_address_base.field_res_country_ward__code
 msgid "Ward Code"
-msgstr "Mã"
+msgstr "Mã phường/xã"
+
+#. module: tangerine_address_base
+#: model:ir.model.fields,field_description:tangerine_address_base.field_res_country_ward__ward_name_without_accent
+msgid "Ward Name Without Accent"
+msgstr "Tên Phường/Xã Không Dấu"
 
 #. module: tangerine_address_base
 #: model:ir.model.fields,field_description:tangerine_address_base.field_res_country_ward__ward_type
 msgid "Ward Type"
-msgstr "Loại"
+msgstr "Loại Phường/Xã"
 
 #. module: tangerine_address_base
 #: model:ir.model.fields,field_description:tangerine_address_base.field_res_country_ward__name
 msgid "Ward name"
-msgstr "Tên"
+msgstr "Tên phường/xã"
+
+#. module: tangerine_address_base
+#: model:ir.model.fields,help:tangerine_address_base.field_res_country_ward__ward_name_without_accent
+msgid "Ward name without accent for easier searching."
+msgstr "Tên phường/xã không dấu để dễ dàng tìm kiếm."
+
+#. module: tangerine_address_base
+#: model:ir.model.fields,field_description:tangerine_address_base.field_res_company__ward_id
+#: model:ir.model.fields,field_description:tangerine_address_base.field_res_country_state__ward_ids
+#: model:ir.model.fields,field_description:tangerine_address_base.field_res_partner__ward_id
+#: model:ir.model.fields,field_description:tangerine_address_base.field_res_users__ward_id
+msgid "Ward/Commune"
+msgstr "Phường/Xã"
 
 #. module: tangerine_address_base
 #: model:ir.actions.act_window,name:tangerine_address_base.res_country_ward_action
 #: model:ir.ui.menu,name:tangerine_address_base.menu_country_ward_partner
 msgid "Wards"
-msgstr  "Phường/Xã"
+msgstr "Phường/Xã"
 
 #. module: tangerine_address_base
 #: model_terms:ir.ui.view,arch_db:tangerine_address_base.res_company_form_view_inherit_by_tangerine
 #: model_terms:ir.ui.view,arch_db:tangerine_address_base.res_partner_form_view_inherit_by_tangerine
 msgid "ZIP"
-msgstr "Mã bưu điện"
+msgstr "Mã ZIP"
+
+#. module: tangerine_address_base
+#: model:ir.model,name:tangerine_address_base.model_res_country_ward
+msgid "ward"
+msgstr "phường/xã"

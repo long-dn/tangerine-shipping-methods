@@ -9,6 +9,7 @@
                 <field name="ward_type" />
                 <field name="name"/>
                 <field name="code"/>
+                <field name="ward_name_without_accent"/>
             </list>
         </field>
     </record>
