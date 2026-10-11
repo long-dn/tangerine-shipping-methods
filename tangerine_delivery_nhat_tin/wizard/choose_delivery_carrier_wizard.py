@@ -27,7 +27,7 @@ class ChooseDeliveryCarrier(models.TransientModel):
                 'ntl_cargo_value': self.order_id.amount_total,
             })
             self.env.context = context
-        return super(ChooseDeliveryCarrier, self)._get_shipment_rate()
+        return super(ChooseDeliveryCarrier, self)._get_delivery_rate()
 
     def button_confirm(self):
         if self.carrier_id.delivery_type == settings.nhat_tin_code.value:
