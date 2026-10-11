@@ -6,11 +6,11 @@
     'website': 'https://github.com/long-dn',
     'license': 'LGPL-3',
     'category': 'Extra Tools',
-    'version': '1.0.0',
+    'version': '20.0.1.0.0',
     'support': 'odoo.tangerine@gmail.com',
     'depends': ['base', 'contacts'],
     'data': [
-        'security/ir.model.access.csv',
+        'security/ir.access.csv',
         'data/res_country_state_data.xml',
         'data/res_country_ward_data.xml',
         'views/res_country_district_views.xml',
