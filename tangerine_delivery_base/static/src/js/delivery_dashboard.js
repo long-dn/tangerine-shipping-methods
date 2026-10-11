@@ -1,4 +1,6 @@
-import { Component, useState, onWillStart, useRef, useEffect, onWillUnmount } from "@odoo/owl";
+import { Component, proxy, signal, onWillStart, onWillUnmount, useProps } from "@odoo/owl";
+import { useLayoutEffect } from "@web/owl2/utils";
+import { standardActionServiceProps } from "@web/webclient/actions/action_plugin";
 import { registry } from "@web/core/registry";
 import { useService } from "@web/core/utils/hooks";
 import { _t } from "@web/core/l10n/translation";
@@ -10,6 +12,14 @@ import { DropdownItem } from "@web/core/dropdown/dropdown_item";
 import { DateTimeInput } from "@web/core/datetime/datetime_input";
 
 const { DateTime } = luxon;
+
+/**
+ * Append an alpha channel to a palette color, which may already carry one
+ * (#RRGGBBAA).
+ */
+function withAlpha(color, alpha) {
+    return color.slice(0, 7) + alpha;
+}
 
 /**
  * Date period options — same structure as spreadsheet.DateFilterDropdown
@@ -111,12 +121,12 @@ function navigatePeriod(periodId, direction, currentFrom, currentTo) {
 class DeliveryDashboard extends Component {
     static template = "tangerine_delivery_base.DeliveryDashboard";
     static components = { Dropdown, DropdownItem, DateTimeInput };
-    static props = ["*"];
+    props = useProps(standardActionServiceProps);
 
     setup() {
         this.orm = useService("orm");
         this.action = useService("action");
-        this.state = useState({
+        this.state = proxy({
             data: null,
             loading: true,
             period: "last_7_days",
@@ -127,14 +137,14 @@ class DeliveryDashboard extends Component {
         });
 
         // Canvas refs for Chart.js
-        this.trendChartRef = useRef("trendChart");
-        this.statusChartRef = useRef("statusChart");
-        this.costChartRef = useRef("costChart");
-        this.webhookChartRef = useRef("webhookChart");
-        this.webhookStatusChartRef = useRef("webhookStatusChart");
-        this.webhookResponseChartRef = useRef("webhookResponseChart");
-        this.scorecardChartRef = useRef("scorecardChart");
-        this.failureTrendChartRef = useRef("failureTrendChart");
+        this.trendChartRef = signal.ref();
+        this.statusChartRef = signal.ref();
+        this.costChartRef = signal.ref();
+        this.webhookChartRef = signal.ref();
+        this.webhookStatusChartRef = signal.ref();
+        this.webhookResponseChartRef = signal.ref();
+        this.scorecardChartRef = signal.ref();
+        this.failureTrendChartRef = signal.ref();
 
         // Chart instances
         this.trendChart = null;
@@ -151,7 +161,7 @@ class DeliveryDashboard extends Component {
             await this.loadDashboard();
         });
 
-        useEffect(
+        useLayoutEffect(
             () => {
                 if (this.state.data && !this.state.loading) {
                     if (this.state.mode === "delivery") {
@@ -188,7 +198,7 @@ class DeliveryDashboard extends Component {
     }
 
     _renderTrendChart() {
-        if (!this.trendChartRef.el || !this.state.data?.daily_orders?.length) return;
+        if (!this.trendChartRef() || !this.state.data?.daily_orders?.length) return;
         if (this.trendChart) this.trendChart.destroy();
 
         const colorScheme = cookie.get("color_scheme");
@@ -197,7 +207,7 @@ class DeliveryDashboard extends Component {
         const values = data.map((d) => d.count);
         const lineColor = getColor(0, colorScheme);
 
-        this.trendChart = new Chart(this.trendChartRef.el, {
+        this.trendChart = new Chart(this.trendChartRef(), {
             type: "line",
             data: {
                 labels,
@@ -205,7 +215,7 @@ class DeliveryDashboard extends Component {
                     label: _t("Orders"),
                     data: values,
                     borderColor: lineColor,
-                    backgroundColor: lineColor + "30",
+                    backgroundColor: withAlpha(lineColor, "30"),
                     fill: true,
                     tension: 0.35,
                     borderWidth: 2.5,
@@ -245,7 +255,7 @@ class DeliveryDashboard extends Component {
     }
 
     _renderStatusChart() {
-        if (!this.statusChartRef.el || !this.state.data?.status_distribution?.length) return;
+        if (!this.statusChartRef() || !this.state.data?.status_distribution?.length) return;
         if (this.statusChart) this.statusChart.destroy();
 
         const colorScheme = cookie.get("color_scheme");
@@ -254,7 +264,7 @@ class DeliveryDashboard extends Component {
         const values = data.map((d) => d.count);
         const colors = data.map((_, i) => getColor(i, colorScheme, data.length));
 
-        this.statusChart = new Chart(this.statusChartRef.el, {
+        this.statusChart = new Chart(this.statusChartRef(), {
             type: "doughnut",
             data: {
                 labels,
@@ -289,7 +299,7 @@ class DeliveryDashboard extends Component {
     }
 
     _renderCostChart() {
-        if (!this.costChartRef.el || !this.state.data?.cost_comparison?.length) return;
+        if (!this.costChartRef() || !this.state.data?.cost_comparison?.length) return;
         if (this.costChart) this.costChart.destroy();
 
         const data = this.state.data.cost_comparison;
@@ -299,7 +309,7 @@ class DeliveryDashboard extends Component {
         const estColor = "#4078c0";
         const actColor = "#e6994a";
 
-        this.costChart = new Chart(this.costChartRef.el, {
+        this.costChart = new Chart(this.costChartRef(), {
             type: "bar",
             data: {
                 labels,
@@ -307,7 +317,7 @@ class DeliveryDashboard extends Component {
                     {
                         label: _t("Estimated"),
                         data: data.map((d) => d.estimated),
-                        backgroundColor: estColor + "cc",
+                        backgroundColor: withAlpha(estColor, "cc"),
                         borderColor: estColor,
                         borderWidth: 1,
                         borderRadius: 3,
@@ -316,7 +326,7 @@ class DeliveryDashboard extends Component {
                     {
                         label: _t("Actual"),
                         data: data.map((d) => d.actual),
-                        backgroundColor: actColor + "cc",
+                        backgroundColor: withAlpha(actColor, "cc"),
                         borderColor: actColor,
                         borderWidth: 1,
                         borderRadius: 3,
@@ -368,9 +378,9 @@ class DeliveryDashboard extends Component {
     }
 
     get modeIcon() {
-        if (this.state.mode === "delivery") return "fa-truck";
-        if (this.state.mode === "webhook") return "fa-rss";
-        return "fa-trophy";
+        if (this.state.mode === "delivery") return "local_shipping";
+        if (this.state.mode === "webhook") return "rss_feed";
+        return "trophy";
     }
 
     selectMode(mode) {
@@ -599,13 +609,13 @@ class DeliveryDashboard extends Component {
     // ========== WEBHOOK MONITORING ==========
 
     _renderWebhookChart() {
-        if (!this.webhookChartRef.el || !this.state.data?.webhook_stats?.daily_data?.length) return;
+        if (!this.webhookChartRef() || !this.state.data?.webhook_stats?.daily_data?.length) return;
         if (this.webhookChart) this.webhookChart.destroy();
 
         const data = this.state.data.webhook_stats.daily_data;
         const labels = data.map((d) => this.formatShortDate(d.date));
 
-        this.webhookChart = new Chart(this.webhookChartRef.el, {
+        this.webhookChart = new Chart(this.webhookChartRef(), {
             type: "line",
             data: {
                 labels,
@@ -672,11 +682,11 @@ class DeliveryDashboard extends Component {
     }
 
     _renderWebhookStatusChart() {
-        if (!this.webhookStatusChartRef.el || !this.state.data?.webhook_stats?.total) return;
+        if (!this.webhookStatusChartRef() || !this.state.data?.webhook_stats?.total) return;
         if (this.webhookStatusChart) this.webhookStatusChart.destroy();
 
         const stats = this.state.data.webhook_stats;
-        this.webhookStatusChart = new Chart(this.webhookStatusChartRef.el, {
+        this.webhookStatusChart = new Chart(this.webhookStatusChartRef(), {
             type: "doughnut",
             data: {
                 labels: [_t("Success"), _t("Error"), _t("Ignored")],
@@ -704,14 +714,14 @@ class DeliveryDashboard extends Component {
     }
 
     _renderWebhookResponseChart() {
-        if (!this.webhookResponseChartRef.el || !this.state.data?.webhook_stats?.carrier_breakdown?.length) return;
+        if (!this.webhookResponseChartRef() || !this.state.data?.webhook_stats?.carrier_breakdown?.length) return;
         if (this.webhookResponseChart) this.webhookResponseChart.destroy();
 
         const breakdown = this.state.data.webhook_stats.carrier_breakdown;
         const labels = breakdown.map((c) => c.carrier_type);
         const avgTimes = breakdown.map((c) => c.avg_time);
 
-        this.webhookResponseChart = new Chart(this.webhookResponseChartRef.el, {
+        this.webhookResponseChart = new Chart(this.webhookResponseChartRef(), {
             type: "bar",
             data: {
                 labels,
@@ -799,7 +809,7 @@ class DeliveryDashboard extends Component {
     // ========== PERFORMANCE ANALYTICS ==========
 
     _renderScorecardChart() {
-        if (!this.scorecardChartRef.el || !this.state.data?.performance?.carrier_scorecard?.length) return;
+        if (!this.scorecardChartRef() || !this.state.data?.performance?.carrier_scorecard?.length) return;
         if (this.scorecardChart) this.scorecardChart.destroy();
 
         const colorScheme = cookie.get("color_scheme");
@@ -809,14 +819,14 @@ class DeliveryDashboard extends Component {
             label: carrier.carrier_name,
             data: [carrier.success_score, carrier.speed_score, carrier.cost_score, carrier.reliability_score],
             borderColor: getColor(idx, colorScheme, data.length),
-            backgroundColor: getColor(idx, colorScheme, data.length) + "30",
+            backgroundColor: withAlpha(getColor(idx, colorScheme, data.length), "30"),
             borderWidth: 2,
             pointRadius: 4,
             pointHoverRadius: 6,
             fill: true,
         }));
 
-        this.scorecardChart = new Chart(this.scorecardChartRef.el, {
+        this.scorecardChart = new Chart(this.scorecardChartRef(), {
             type: "radar",
             data: { labels, datasets },
             options: {
@@ -849,7 +859,7 @@ class DeliveryDashboard extends Component {
     }
 
     _renderFailureTrendChart() {
-        if (!this.failureTrendChartRef.el) return;
+        if (!this.failureTrendChartRef()) return;
         const analysis = this.state.data?.performance?.failure_analysis;
         if (!analysis?.weekly_trend?.length) return;
         if (this.failureTrendChart) this.failureTrendChart.destroy();
@@ -863,7 +873,7 @@ class DeliveryDashboard extends Component {
             label: carrier,
             data: weeklyData.map((d) => d[carrier] || 0),
             borderColor: getColor(idx, colorScheme, carriers.length),
-            backgroundColor: getColor(idx, colorScheme, carriers.length) + "30",
+            backgroundColor: withAlpha(getColor(idx, colorScheme, carriers.length), "30"),
             fill: false,
             tension: 0.35,
             borderWidth: 2,
@@ -871,7 +881,7 @@ class DeliveryDashboard extends Component {
             pointHoverRadius: 5,
         }));
 
-        this.failureTrendChart = new Chart(this.failureTrendChartRef.el, {
+        this.failureTrendChart = new Chart(this.failureTrendChartRef(), {
             type: "line",
             data: { labels, datasets },
             options: {

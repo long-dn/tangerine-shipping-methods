@@ -1,0 +1,13 @@
+id,name,model_id,group_id/id,operation,domain
+access_delivery_route_api,access_delivery_route_api,delivery.route.api,base.group_user,crud,
+access_delivery_status,access_delivery_status,delivery.status,base.group_user,crud,
+access_delivery_standard_status,access_delivery_standard_status,delivery.standard.status,base.group_user,crud,
+access_delivery_status_mapping,access_delivery_status_mapping,delivery.status.mapping,base.group_user,crud,
+access_carrier_ref_order,access_carrier_ref_order,carrier.ref.order,base.group_user,crud,
+access_print_order_wizard,access_print_order_wizard,print.order.wizard,base.group_user,crud,
+access_delivery_dashboard,access_delivery_dashboard,delivery.dashboard,base.group_user,r,
+access_delivery_webhook_log,access_delivery_webhook_log,delivery.webhook.log,base.group_user,crud,
+access_cod_reconciliation,access_cod_reconciliation,cod.reconciliation,base.group_user,crud,
+access_cod_reconciliation_line,access_cod_reconciliation_line,cod.reconciliation.line,base.group_user,crud,
+access_cod_reconciliation_import_wizard,access_cod_reconciliation_import_wizard,cod.reconciliation.import.wizard,base.group_user,cru,
+carrier_ref_order_company_rule,Carrier Ref Order: multi-company,carrier.ref.order,,crud,"[('company_id', 'in', company_ids + [False])]"

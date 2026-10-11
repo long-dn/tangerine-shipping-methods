@@ -106,10 +106,9 @@ class DeliveryWebhookLog(models.Model):
     @api.model
     def _cron_cleanup_webhook_logs(self):
         """Scheduled action: delete webhook logs older than configured retention days."""
-        ICP = self.env['ir.config_parameter'].sudo()
-        retention_days = int(ICP.get_param(
-            'tangerine_delivery_base.webhook_log_retention_days', '30'
-        ))
+        retention_days = self.env['ir.config_parameter'].sudo().get_int(
+            'tangerine_delivery_base.webhook_log_retention_days', 30
+        )
         if retention_days <= 0:
             _logger.info('Webhook log auto-delete is disabled (retention_days=%s).', retention_days)
             return

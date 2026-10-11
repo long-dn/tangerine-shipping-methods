@@ -19,7 +19,7 @@
                 <sheet>
                     <div class="oe_button_box" name="button_box">
                         <button name="action_view_purchase_order" type="object"
-                                class="oe_stat_button" icon="fa-shopping-cart"
+                                class="oe_stat_button" icon="shopping_cart"
                                 invisible="purchase_count == 0">
                             <field name="purchase_count" string="Purchase Order" widget="statinfo"/>
                         </button>

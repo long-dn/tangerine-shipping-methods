@@ -7,3 +7,8 @@
         }
     }
 }
+
+.o-date-filter-dropdown .o_datetime_input {
+    min-width: 6rem;
+    border-bottom-color: var(--bs-border-color);
+}

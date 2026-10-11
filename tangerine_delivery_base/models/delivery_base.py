@@ -1,3 +1,4 @@
+import base64
 import requests
 from secrets import token_hex
 from requests.exceptions import ConnectionError, ConnectTimeout
@@ -141,13 +142,12 @@ class DeliveryBase(models.Model):
 
     def set_webhook_url(self):
         self.ensure_one()
-        web_base_url = self.env['ir.config_parameter'].sudo().get_param('web.base.url')
-        self.write({'webhook_url': f'{web_base_url}/webhook/v1/delivery/{self.delivery_type}'})
+        self.write({'webhook_url': f'{self.get_base_url()}/webhook/v1/delivery/{self.delivery_type}'})
 
     def create_pdf_delivery_label(self, picking, content):
         return self.env['ir.attachment'].sudo().create([{
             'name': f'[{self.name}] - Delivery Label: {picking.carrier_tracking_ref}.pdf',
-            'datas': content,
+            'raw': base64.b64decode(content),
             'type': 'binary',
             'res_model': picking._name,
             'res_id': picking.id,

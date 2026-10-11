@@ -2,7 +2,6 @@
 import requests
 import logging
 from dataclasses import dataclass
-from odoo import _
 from odoo.models import Model
 from odoo.exceptions import UserError
 
@@ -35,7 +34,7 @@ class Connection:
             request_func = _METHOD_DISPATCH.get(method)
             if not request_func:
                 self.debug(f'The interface not support method: {method}', url)
-                raise UserError(_(f'The interface not support method: {method}'))
+                raise UserError(self.provider.env._('The interface not support method: %s', method))
             response = request_func(url, headers, kwargs)
             response.raise_for_status()
             if response.status_code == 204:

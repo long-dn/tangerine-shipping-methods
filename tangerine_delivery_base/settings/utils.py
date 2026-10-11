@@ -5,7 +5,7 @@ import functools
 from typing import NamedTuple, Any, Optional
 from datetime import datetime
 from urllib.parse import urlencode, unquote_plus
-from odoo import _, SUPERUSER_ID
+from odoo import SUPERUSER_ID
 from odoo.exceptions import UserError
 from odoo.http import request
 from .status import status
@@ -57,7 +57,7 @@ def notification(notification_type, message):
         'tag': 'display_notification',
         'params': {
             'type': notification_type,
-            'message': _(message),
+            'message': message,
             'next': {'type': 'ir.actions.act_window_close'},
         }
     }
@@ -66,7 +66,7 @@ def notification(notification_type, message):
 def get_route_api(provider_id, code):
     route_id = provider_id.route_api_ids.search([('code', '=', code)])
     if not route_id:
-        raise UserError(_(f'Route {code} not found'))
+        raise UserError(provider_id.env._('Route %s not found', code))
     return route_id
 
 

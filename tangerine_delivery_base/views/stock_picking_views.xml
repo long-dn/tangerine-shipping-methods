@@ -18,14 +18,16 @@
                 <button name="%(carrier_ref_order_action)d"
                         type="action"
                         context="{'search_default_picking_id': id}"
-                        class="oi oi-search oe_link btn_view_detail_order"
+                        icon="search"
+                        class="oe_link btn_view_detail_order"
                         string="View"
                         invisible="not carrier_tracking_ref"
                 />
                 <button type="object"
                         name="action_print_order"
                         string="Print"
-                        class="fa fa-print oe_link"
+                        icon="print"
+                        class="oe_link"
                         invisible="not carrier_tracking_ref or not is_support_feature_print_order"
                 />
             </field>

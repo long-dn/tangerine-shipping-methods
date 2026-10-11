@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-import base64
 import logging
 
 from odoo import api, fields, models, _
@@ -64,8 +63,7 @@ class CodReconciliationImportWizard(models.TransientModel):
         # Clear existing lines
         reconciliation.line_ids.unlink()
 
-        # Decode file
-        file_data = base64.b64decode(self.import_file)
+        file_data = self.import_file.content
 
         # Call carrier-specific parser on the reconciliation model
         result = reconciliation._parse_reconciliation_file(file_data, self.import_filename)

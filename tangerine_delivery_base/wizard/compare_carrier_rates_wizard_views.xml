@@ -11,7 +11,7 @@
                             type="object"
                             class="btn-primary"
                             invisible="is_loading"
-                            icon="fa-check"/>
+                            icon="check"/>
                     <button string="Close" class="btn-secondary" special="cancel"/>
                 </header>
                 <sheet>
@@ -23,7 +23,7 @@
                     </div>
                     <field name="is_loading" invisible="1"/>
                     <div invisible="not is_loading" class="alert alert-info text-center" role="status">
-                        <i class="fa fa-spinner fa-spin me-2"/>
+                        <i class="oi oi-spin me-2" data-icon="progress_activity"/>
                         Click <b>Fetch Rates</b> to get quotes from all carriers using their default configurations.
                     </div>
                     <field name="line_ids" mode="list" invisible="is_loading" nolabel="1">
@@ -41,7 +41,7 @@
                     </field>
                     <footer invisible="not is_loading">
                         <button name="action_fetch_rates" string="Fetch Rates"
-                                type="object" class="btn-primary" icon="fa-bolt"/>
+                                type="object" class="btn-primary" icon="flash_on"/>
                         <button string="Cancel" class="btn-secondary" special="cancel"/>
                     </footer>
                 </sheet>

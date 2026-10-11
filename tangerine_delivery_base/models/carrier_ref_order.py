@@ -231,7 +231,7 @@ class CarrierRefOrder(models.Model):
                     'name': f"DO: {record.picking_id.name} - Ref: {record.carrier_tracking_ref}",
                     'product_qty': 1,
                     'price_unit': record.real_delivery_charge or record.delivery_charge,
-                    'product_uom_id': product.uom_id.id,
+                    'uom_id': product.uom_id.id,
                 })
                 record.purchase_id = target_po.id
 
