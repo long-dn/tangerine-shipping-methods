@@ -26,7 +26,7 @@ class ProviderGrab(models.Model):
 
     lalamove_service_ids = fields.One2many('lalamove.service', 'carrier_id')
     lalamove_spec_service_ids = fields.One2many('lalamove.special.service', 'carrier_id')
-    default_lalamove_regional_id = fields.Many2one('lalamove.regional', string='Regional', required=True)
+    default_lalamove_regional_id = fields.Many2one('lalamove.regional', string='Regional')
     default_lalamove_service_id = fields.Many2one('lalamove.service', string='Vehicle Type')
     default_lalamove_use_coordinates = fields.Boolean(string='Coordinates Use', default=False)
     lalamove_special_service_domain = fields.Binary(default=[], store=False)
