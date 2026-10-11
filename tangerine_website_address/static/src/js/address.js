@@ -1,73 +1,65 @@
 /** @odoo-module **/
 import { rpc } from "@web/core/network/rpc";
-import websiteSaleAddress from '@website_sale/js/address';
+import websiteSaleAddress from "@website_sale/js/address";
 
+/**
+ * /shop/address: the wards of Vietnam belong to the states (2025 reform),
+ * reload them each time the state changes.
+ */
 websiteSaleAddress.include({
-    events: Object.assign({}, websiteSaleAddress.prototype.events, {
-        'change select[name="district_id"]': '_onChangeDistrict',
-    }),
-
-    // start() {
-    //     const def = this._super(...arguments);
-    //     this._changeState(true);
-    //     this._changeDistrict(true);
-    //     return def;
-    // },
-
-    _onChangeState: function (ev) {
-        let def = this._super.apply(this, arguments);
-        if (this.countryCode !== 'VN') {
-            return def;
-        }
-        this._changeStateVN()
+    _getSelectedCountryCode() {
+        const selectCountry = this.addressForm.country_id;
+        const option = selectCountry && selectCountry.options[selectCountry.selectedIndex];
+        return option ? option.getAttribute("code") : "";
     },
 
-    _changeStateVN: function (init = false) {
+    _changeOption(selectElement, choices, defaultValue) {
+        // empty existing options, only keep the placeholder.
+        selectElement.options.length = 1;
+        choices.forEach((item) => {
+            const option = new Option(item[1], item[0]);
+            option.setAttribute("data-code", item[2]);
+            if (defaultValue && item[0] == defaultValue) {
+                option.selected = true;
+            }
+            selectElement.appendChild(option);
+        });
+    },
+
+    async _changeCountry(init = false) {
+        await this._super(...arguments);
+        if (!this.addressForm.ward_id) {
+            return;
+        }
+        if (this._getSelectedCountryCode() !== "VN") {
+            this._changeOption(this.addressForm.ward_id, []);
+            this._hideInput("ward_id");
+        } else if (!init) {
+            // the states have been reloaded, so are the wards
+            await this._changeStateVN();
+        }
+    },
+
+    async _onChangeState(ev) {
+        await this._super(...arguments);
+        if (this.addressForm.ward_id && this._getSelectedCountryCode() === "VN") {
+            await this._changeStateVN();
+        }
+    },
+
+    async _changeStateVN() {
+        const selectWards = this.addressForm.ward_id;
         const stateId = parseInt(this.addressForm.state_id.value);
-        if (!stateId) { return; }
-        return rpc(`/shop/district_info/${stateId}`).then((data) => {
-            let selectDistricts = this.addressForm.district_id;
-            if (!init || selectDistricts.options.length === 1) {
-                if (data.districts.length) {
-                    selectDistricts.options.length = 1;
-                    data.districts.forEach((district) => {
-                        let option = new Option(district[1], district[0]);
-                        option.setAttribute('data-code', district[2]);
-                        selectDistricts.appendChild(option);
-                    });
-                    this._showInput('district_id');
-                } else {
-                    this._hideInput('district_id');
-                }
-            }
-        });
-    },
-
-    _onChangeDistrict: function () {
-        if (this.countryCode !== 'VN') {
-            return def;
+        let choices = [];
+        if (stateId) {
+            const data = await rpc(`/my/address/state_vn_info/${stateId}`);
+            choices = data.wards;
         }
-        this._changeDistrict();
+        this._changeOption(selectWards, choices, selectWards.value);
+        if (choices.length) {
+            this._showInput("ward_id");
+        } else {
+            this._hideInput("ward_id");
+        }
     },
-
-    _changeDistrict: function (init = false) {
-        const districtId = parseInt(this.addressForm.district_id.value);
-        if (!districtId) { return; }
-        return rpc(`/shop/ward_info/${districtId}`).then((data) => {
-            let selectWards = this.addressForm.ward_id;
-            if (!init || selectWards.options.length === 1) {
-                if (data.wards.length) {
-                    selectWards.options.length = 1;
-                    data.wards.forEach((ward) => {
-                        let option = new Option(ward[1], ward[0]);
-                        option.setAttribute('data-code', ward[2]);
-                        selectWards.appendChild(option);
-                    });
-                    this._showInput('ward_id');
-                } else {
-                    this._hideInput('ward_id');
-                }
-            }
-        });
-    }
-})
+});
