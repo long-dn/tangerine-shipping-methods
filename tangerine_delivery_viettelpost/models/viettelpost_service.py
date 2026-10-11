@@ -22,6 +22,7 @@ class ViettelPostService(models.Model):
         for rec in self:
             rec.display_name = f'[{rec.code}] - {rec.name}'
 
+
     _sql_constraints = [
         ('code_uniq', 'unique (code)', 'Service already exists!'),
     ]
