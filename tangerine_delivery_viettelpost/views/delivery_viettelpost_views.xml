@@ -15,12 +15,12 @@
                         <field name="domain"/>
                         <button name="action_test_connection"
                                 string="Test Connection"
-                                icon="fa-plug"
+                                icon="power"
                                 type="object"
                         />
                         <button name="get_access_token"
                                 string="Get Access Token"
-                                icon="fa-refresh"
+                                icon="refresh"
                                 type="object"
                         />
                     </div>
@@ -47,7 +47,6 @@
                     <field name="default_viettelpost_product_type"/>
                     <field name="default_viettelpost_service_id"/>
                     <field name="default_viettelpost_service_extend_id" domain="[('service_id', '=?', default_viettelpost_service_id)]"/>
-                    <field name="viettelpost_service_request_domain" invisible="1"/>
                     <field name="default_viettelpost_national_type"/>
                     <field name="default_viettelpost_paper_size"/>
                 </group>
@@ -64,7 +63,7 @@
                         <field name="is_use_authentication" widget="boolean_toggle"/>
                         <button name="action_generate_access_token"
                                 string="Generate Access Token"
-                                icon="oi-arrow-right"
+                                icon="arrow_forward"
                                 type="object"
                                 invisible="not is_use_authentication"
                         />

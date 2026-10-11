@@ -28,7 +28,6 @@
                            required="delivery_type == 'viettelpost'"
                     />
                     <field name="viettelpost_service_extend_id" domain="[('service_id', '=?', viettelpost_service_id)]"/>
-                    <field name="viettelpost_service_request_domain" invisible="1"/>
                     <field name="promo_code" readonly="carrier_tracking_ref"/>
                     <field name="remarks"/>
                 </group>

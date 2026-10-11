@@ -26,7 +26,6 @@ class ProviderViettelpost(models.Model):
         selection=settings.national_type.value,
         string='Types of Shipments'
     )
-    viettelpost_service_request_domain = fields.Binary(default=[], store=False)
     default_viettelpost_service_id = fields.Many2one('viettelpost.service', string='Service')
     default_viettelpost_service_extend_id = fields.Many2one('viettelpost.service.extend', string='Service Extend')
     default_viettelpost_paper_size = fields.Selection(settings.paper_size.value, string='Print Paper Size')
