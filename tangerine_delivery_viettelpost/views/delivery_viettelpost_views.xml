@@ -45,8 +45,8 @@
                     <field name="default_promo_code"/>
                     <field name="default_viettelpost_order_payment"/>
                     <field name="default_viettelpost_product_type"/>
-                    <field name="default_viettelpost_service_id" domain="viettelpost_service_request_domain"/>
-                    <field name="default_viettelpost_service_extend_id"/>
+                    <field name="default_viettelpost_service_id"/>
+                    <field name="default_viettelpost_service_extend_id" domain="[('service_id', '=?', default_viettelpost_service_id)]"/>
                     <field name="viettelpost_service_request_domain" invisible="1"/>
                     <field name="default_viettelpost_national_type"/>
                     <field name="default_viettelpost_paper_size"/>
