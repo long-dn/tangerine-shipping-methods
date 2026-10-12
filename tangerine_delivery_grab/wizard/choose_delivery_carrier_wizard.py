@@ -16,22 +16,29 @@ class ChooseDeliveryCarrier(models.TransientModel):
                 rec.grab_service_type = rec.carrier_id.default_grab_service_type
                 rec.grab_vehicle_type = rec.carrier_id.default_grab_vehicle_type
 
-    def _get_delivery_rate(self):
+    @api.onchange('grab_service_type', 'grab_vehicle_type', 'is_cod', 'cod_amount')
+    def _onchange_grab_service_type(self):
+        # the quote depends on the service, the vehicle and the cash on delivery
         if self.carrier_id.delivery_type == settings.grab_code.value:
-            self = self.with_context(**{
-                'grab_service_type': self.grab_service_type or self.carrier_id.default_grab_service_type or settings.default_service_type.value,
-                'grab_vehicle_type': self.grab_vehicle_type or self.carrier_id.default_grab_vehicle_type or settings.default_vehicle_type.value,
-                'grab_cod': self.is_cod,
-                'grab_cod_amount': self.cod_amount,
-            })
-        return super(ChooseDeliveryCarrier, self)._get_delivery_rate()
+            self._handle_delivery_vals(self._get_carrier_delivery_rate(self.carrier_id))
+
+    def _get_carrier_delivery_rate(self, carrier):
+        if carrier.delivery_type == settings.grab_code.value:
+            wizard = self if carrier == self.carrier_id else self.browse()
+            self = self.with_context(
+                grab_service_type=wizard.grab_service_type or carrier.default_grab_service_type or settings.default_service_type.value,
+                grab_vehicle_type=wizard.grab_vehicle_type or carrier.default_grab_vehicle_type or settings.default_vehicle_type.value,
+                grab_cod=wizard.is_cod,
+                grab_cod_amount=wizard.cod_amount,
+            )
+        return super()._get_carrier_delivery_rate(carrier)
 
     def button_confirm(self):
         if self.carrier_id.delivery_type == settings.grab_code.value:
-            self = self.with_context(**{'grab_quotation_data': json.dumps({
+            self = self.with_context(grab_quotation_data=json.dumps({
                 'grab_service_type': self.grab_service_type,
                 'grab_vehicle_type': self.grab_vehicle_type,
                 'grab_cod': self.is_cod,
                 'grab_cod_amount': self.cod_amount
-            })})
+            }))
         return super(ChooseDeliveryCarrier, self).button_confirm()
