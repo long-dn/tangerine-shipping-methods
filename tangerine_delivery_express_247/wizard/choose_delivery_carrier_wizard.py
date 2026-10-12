@@ -17,9 +17,7 @@ class ChooseDeliveryCarrier(models.TransientModel):
 
     def _get_delivery_rate(self):
         if self.carrier_id.delivery_type == settings.code.value:
-            context = dict(self.env.context)
-            context.update({
+            self = self.with_context(**{
                 'express_247_service_type': self.express_247_service_type_id.code or self.carrier_id.default_express_247_service_type_id.code or settings.default_service_type.value,
             })
-            self.env.context = context
         return super(ChooseDeliveryCarrier, self)._get_delivery_rate()

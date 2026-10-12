@@ -6,7 +6,6 @@ import threading
 from dateutil import parser
 from odoo import fields, models, _
 from odoo.exceptions import UserError, ValidationError
-from odoo.tools import ustr
 from odoo.addons.tangerine_delivery_base.settings.utils import (
     get_route_api,
     notification,
@@ -60,7 +59,7 @@ class ProviderViettelpost(models.Model):
             self.env['special.service.type.247.express'].express_247_special_service_type_synchronous()
             return notification('success', 'Get access token successfully')
         except Exception as e:
-            raise UserError(ustr(e))
+            raise UserError(str(e))
 
     def _express_247_payload_get_price(self, order):
         warehouse_id = order.warehouse_id
@@ -96,9 +95,9 @@ class ProviderViettelpost(models.Model):
             'OrderInfo': {
                 'ClientHubID': warehouse_id.express_247_hub_id,
                 'ContactName': warehouse_id.partner_id.name,
-                'ContactPhone': convert_e164_to_classic(warehouse_id.partner_id.phone or warehouse_id.partner_id.mobile),
+                'ContactPhone': convert_e164_to_classic(warehouse_id.partner_id.phone),
                 'SenderAddress': warehouse_id.partner_id.shipping_address,
-                'ReceiverPhone': convert_e164_to_classic(picking.partner_id.phone or picking.partner_id.mobile),
+                'ReceiverPhone': convert_e164_to_classic(picking.partner_id.phone),
                 'ReceiverName': picking.partner_id.name,
                 'ReceiverAddress': picking.partner_id.shipping_address,
                 'ReceiverProvinceName': picking.partner_id.state_id.name,

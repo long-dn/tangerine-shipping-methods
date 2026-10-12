@@ -20,7 +20,7 @@ class Warehouse(models.Model):
             'HubInfo': {
                 'Address': warehouse.partner_id.shipping_address,
                 'ContactName': warehouse.partner_id.name,
-                'ContactPhone': convert_e164_to_classic(warehouse.partner_id.phone or warehouse.partner_id.mobile),
+                'ContactPhone': convert_e164_to_classic(warehouse.partner_id.phone),
                 'DistrictName': warehouse.partner_id.district_id.name,
                 'ProvinceName': warehouse.partner_id.state_id.name,
                 'WardName': warehouse.partner_id.ward_id.name,

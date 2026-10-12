@@ -1,5 +1,4 @@
 import logging
-from odoo.tools import ustr
 from odoo.http import request, Controller, route
 from odoo.addons.tangerine_delivery_base.settings.status import status
 from odoo.addons.tangerine_delivery_base.settings.utils import authentication, response
@@ -15,7 +14,7 @@ class DeliveriesController(Controller):
     @route([
         '/webhook/v1/delivery/express_247',
         '/webhook/v1/delivery/express_247/<string:access_token>',
-    ], type='json', auth='public', methods=['POST'])
+    ], type='jsonrpc', auth='public', methods=['POST'])
     def express_247_callback(self):
         try:
             body = request.dispatcher.jsonrequest
@@ -46,5 +45,5 @@ class DeliveriesController(Controller):
                 message=f'Receive order callback {body.get("OrderCode")} successfully.'
             )
         except Exception as e:
-            _logger.exception(f'WEBHOOK 247 EXPRESS EXCEPTION: {ustr(e)}')
-            return response(status=status.HTTP_500_INTERNAL_SERVER_ERROR.value, message=ustr(e))
+            _logger.exception(f'WEBHOOK 247 EXPRESS EXCEPTION: {str(e)}')
+            return response(status=status.HTTP_500_INTERNAL_SERVER_ERROR.value, message=str(e))
