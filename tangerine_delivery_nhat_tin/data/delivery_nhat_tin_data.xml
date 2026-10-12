@@ -27,7 +27,7 @@
             <field name="base_weight_unit">KG</field>
             <field name="external_carrier_id" ref="nhat_tin_delivery_carrier_partner"/>
             <field name="carrier_description">Nhat Tin Logistics APIs will allow shipper to easily place, cancel, get quotes and track the order via simple integration</field>
-            <field name="image" type="base64" file="tangerine_delivery_nhat_tin/static/description/icon.png"/>
+            <field name="image" type="bytes" file="tangerine_delivery_nhat_tin/static/description/icon.png"/>
         </record>
 
         <function model="delivery.carrier" name="set_webhook_url">
