@@ -18,25 +18,21 @@ class ChooseDeliveryCarrier(models.TransientModel):
 
     def _get_delivery_rate(self):
         if self.carrier_id.delivery_type == settings.nhat_tin_code.value:
-            context = dict(self.env.context)
-            context.update({
+            self = self.with_context(**{
                 'ntl_service_type': self.ntl_service_type or self.carrier_id.default_ntl_service_type or settings.default_service_type.value,
                 'ntl_payment_method': self.ntl_payment_method or self.carrier_id.default_ntl_payment_method or settings.default_payment_method.value,
                 'ntl_cod': self.is_cod,
                 'ntl_cod_amount': self.cod_amount,
                 'ntl_cargo_value': self.order_id.amount_total,
             })
-            self.env.context = context
         return super(ChooseDeliveryCarrier, self)._get_delivery_rate()
 
     def button_confirm(self):
         if self.carrier_id.delivery_type == settings.nhat_tin_code.value:
-            context = dict(self.env.context)
-            context.update({'ntl_quotation_data': json.dumps({
+            self = self.with_context(**{'ntl_quotation_data': json.dumps({
                 'ntl_service_type': self.ntl_service_type,
                 'ntl_payment_method': self.ntl_payment_method,
                 'ntl_cod': self.is_cod,
                 'ntl_cod_amount': self.cod_amount
             })})
-            self.env.context = context
-        return super().button_confirm()
+        return super(ChooseDeliveryCarrier, self).button_confirm()
