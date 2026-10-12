@@ -6,7 +6,6 @@ import threading
 from datetime import datetime, timedelta
 from odoo import fields, models, _
 from odoo.exceptions import UserError, ValidationError
-from odoo.tools import ustr
 from odoo.addons.tangerine_delivery_base.settings.utils import (
     datetime_to_rfc3339,
     standardization_e164,
@@ -73,7 +72,7 @@ class ProviderGrab(models.Model):
             threaded_update_cron.start()
             return notification('success', 'Get access token successfully')
         except Exception as e:
-            raise UserError(ustr(e))
+            raise UserError(str(e))
 
     @staticmethod
     def _grab_validate_coordinates(contact):
@@ -191,14 +190,14 @@ class ProviderGrab(models.Model):
             'paymentMethod': picking.grab_payment_method,
             'payer': picking.grab_payer,
             'highValue': picking.grab_high_value,
-            'packages': self._grab_get_packages(picking.move_ids_without_package),
+            'packages': self._grab_get_packages(picking.move_ids),
             'sender': {
                 'firstName': sender_id.name,
-                'phone': standardization_e164(sender_id.phone or sender_id.mobile)
+                'phone': standardization_e164(sender_id.phone)
             },
             'recipient': {
                 'firstName': picking.partner_id.name,
-                'phone': standardization_e164(picking.partner_id.phone or picking.partner_id.mobile)
+                'phone': standardization_e164(picking.partner_id.phone)
             },
             'origin': self._grab_building_address(sender_id),
             'destination': self._grab_building_address(picking.partner_id),

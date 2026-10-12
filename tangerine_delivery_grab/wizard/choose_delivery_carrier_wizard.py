@@ -18,24 +18,20 @@ class ChooseDeliveryCarrier(models.TransientModel):
 
     def _get_delivery_rate(self):
         if self.carrier_id.delivery_type == settings.grab_code.value:
-            context = dict(self.env.context)
-            context.update({
+            self = self.with_context(**{
                 'grab_service_type': self.grab_service_type or self.carrier_id.default_grab_service_type or settings.default_service_type.value,
                 'grab_vehicle_type': self.grab_vehicle_type or self.carrier_id.default_grab_vehicle_type or settings.default_vehicle_type.value,
                 'grab_cod': self.is_cod,
                 'grab_cod_amount': self.cod_amount,
             })
-            self.env.context = context
         return super(ChooseDeliveryCarrier, self)._get_delivery_rate()
 
     def button_confirm(self):
         if self.carrier_id.delivery_type == settings.grab_code.value:
-            context = dict(self.env.context)
-            context.update({'grab_quotation_data': json.dumps({
+            self = self.with_context(**{'grab_quotation_data': json.dumps({
                 'grab_service_type': self.grab_service_type,
                 'grab_vehicle_type': self.grab_vehicle_type,
                 'grab_cod': self.is_cod,
                 'grab_cod_amount': self.cod_amount
             })})
-            self.env.context = context
         return super(ChooseDeliveryCarrier, self).button_confirm()

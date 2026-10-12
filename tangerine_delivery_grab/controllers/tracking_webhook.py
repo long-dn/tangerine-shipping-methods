@@ -1,5 +1,4 @@
 import logging
-from odoo.tools import ustr
 from odoo.http import request, Controller, route
 from odoo.addons.tangerine_delivery_base.settings.utils import authentication, response
 from odoo.addons.tangerine_delivery_base.settings.status import status
@@ -11,7 +10,7 @@ _logger = logging.getLogger(__name__)
 
 class DeliveriesController(Controller):
     @authentication(settings.grab_code.value)
-    @route('/webhook/v1/delivery/grab', type='json', auth='public', methods=['POST'])
+    @route('/webhook/v1/delivery/grab', type='jsonrpc', auth='public', methods=['POST'])
     def grab_callback(self):
         try:
             body = request.dispatcher.jsonrequest
@@ -60,5 +59,5 @@ class DeliveriesController(Controller):
                 message=f'Receive order callback {body.get("deliveryID")} successfully.'
             )
         except Exception as e:
-            _logger.exception(f'WEBHOOK GRAB EXCEPTION: {ustr(e)}')
-            return response(status=status.HTTP_500_INTERNAL_SERVER_ERROR.value, message=ustr(e))
+            _logger.exception(f'WEBHOOK GRAB EXCEPTION: {str(e)}')
+            return response(status=status.HTTP_500_INTERNAL_SERVER_ERROR.value, message=str(e))
