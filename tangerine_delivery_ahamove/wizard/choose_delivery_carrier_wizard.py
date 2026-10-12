@@ -37,25 +37,20 @@ class ChooseDeliveryCarrier(models.TransientModel):
 
     def _get_delivery_rate(self):
         if self.carrier_id.delivery_type == settings.ahamove_code.value:
-            context = dict(self.env.context)
-            context.update({
+            self = self.with_context(**{
                 'ahamove_service': self.ahamove_service_id.code,
                 'ahamove_service_request_ids': self.ahamove_service_request_ids,
                 'promo_code': self.promo_code
             })
-            self.env.context = context
         return super(ChooseDeliveryCarrier, self)._get_delivery_rate()
 
     def button_confirm(self):
         if self.carrier_id.delivery_type == settings.ahamove_code.value:
-            context = dict(self.env.context)
-            context.update({'ahamove_quotation_data': json.dumps({
+            self = self.with_context(**{'ahamove_quotation_data': json.dumps({
                 'ahamove_service_id': self.ahamove_service_id.id,
                 'ahamove_service_request_ids': self.ahamove_service_request_ids.ids,
                 'promo_code': self.promo_code,
                 'ahamove_cod': self.is_cod,
                 'ahamove_cod_amount': self.cod_amount
             })})
-            self.env.context = context
-            _logger.debug('context', context)
-        return super().button_confirm()
+        return super(ChooseDeliveryCarrier, self).button_confirm()
