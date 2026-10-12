@@ -1,0 +1,3 @@
+id,name,model_id,group_id/id,operation,domain
+access_service_type_247_express,access_service_type_247_express,service.type.247.express,base.group_user,crud,
+access_special_service_type_247_express,access_special_service_type_247_express,special.service.type.247.express,base.group_user,crud,

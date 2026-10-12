@@ -15,12 +15,12 @@
                         <field name="domain"/>
                         <button name="action_test_connection"
                                 string="Test Connection"
-                                icon="fa-plug"
+                                icon="power"
                                 type="object"
                         />
                         <button name="get_access_token"
                                 string="Get Access Token"
-                                icon="fa-refresh"
+                                icon="refresh"
                                 type="object"
                         />
                     </div>
@@ -64,7 +64,7 @@
                         <field name="is_use_authentication" widget="boolean_toggle"/>
                         <button name="action_generate_access_token"
                                 string="Generate Access Token"
-                                icon="oi-arrow-right"
+                                icon="arrow_forward"
                                 type="object"
                                 invisible="not is_use_authentication"
                         />

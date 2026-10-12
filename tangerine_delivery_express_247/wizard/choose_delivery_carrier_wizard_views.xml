@@ -5,12 +5,13 @@
         <field name="model">choose.delivery.carrier</field>
         <field name="inherit_id" ref="delivery.choose_delivery_carrier_view_form" />
         <field name="arch" type="xml">
-            <field name="carrier_id" position="after">
+            <label for="display_price" position="before">
                 <field name="express_247_service_type_id"
                        invisible="delivery_type != 'express_247'"
                        required="delivery_type == 'express_247'"
+                       readonly="is_loading_prices"
                 />
-            </field>
+            </label>
         </field>
     </record>
 </odoo>

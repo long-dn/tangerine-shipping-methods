@@ -9,7 +9,7 @@
                 <button name="express_247_register_warehouse"
                         type="object"
                         string="Register Warehouse"
-                        icon="fa-refresh"
+                        icon="refresh"
                         help="Register shipping address to carrier 247 Express"
                 />
             </xpath>
