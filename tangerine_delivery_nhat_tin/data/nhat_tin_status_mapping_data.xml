@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data noupdate="1">
+        <!-- Nhat Tin: 12 - Draft bill of lading → Draft -->
+        <record id="ntl_mapping_12" model="delivery.status.mapping">
+            <field name="provider_id" ref="tangerine_delivery_nhat_tin.tangerine_delivery_nhat_tin_provider"/>
+            <field name="carrier_status_id" ref="tangerine_delivery_nhat_tin.ntl_status_12"/>
+            <field name="standard_status_id" ref="tangerine_delivery_base.standard_status_draft"/>
+            <field name="sequence">10</field>
+        </record>
+
+        <!-- Nhat Tin: 2 - Waiting for pick-up → Confirmed -->
+        <record id="ntl_mapping_2" model="delivery.status.mapping">
+            <field name="provider_id" ref="tangerine_delivery_nhat_tin.tangerine_delivery_nhat_tin_provider"/>
+            <field name="carrier_status_id" ref="tangerine_delivery_nhat_tin.ntl_status_2"/>
+            <field name="standard_status_id" ref="tangerine_delivery_base.standard_status_confirmed"/>
+            <field name="sequence">20</field>
+        </record>
+
+        <!-- Nhat Tin: 17 - Could not pickup → Failed -->
+        <record id="ntl_mapping_17" model="delivery.status.mapping">
+            <field name="provider_id" ref="tangerine_delivery_nhat_tin.tangerine_delivery_nhat_tin_provider"/>
+            <field name="carrier_status_id" ref="tangerine_delivery_nhat_tin.ntl_status_17"/>
+            <field name="standard_status_id" ref="tangerine_delivery_base.standard_status_failed"/>
+            <field name="sequence">30</field>
+        </record>
+
+        <!-- Nhat Tin: 3 - Picked up → Picked Up -->
+        <record id="ntl_mapping_3" model="delivery.status.mapping">
+            <field name="provider_id" ref="tangerine_delivery_nhat_tin.tangerine_delivery_nhat_tin_provider"/>
+            <field name="carrier_status_id" ref="tangerine_delivery_nhat_tin.ntl_status_3"/>
+            <field name="standard_status_id" ref="tangerine_delivery_base.standard_status_picked_up"/>
+            <field name="sequence">40</field>
+        </record>
+
+        <!-- Nhat Tin: 15 - Transporting → In Transit -->
+        <record id="ntl_mapping_15" model="delivery.status.mapping">
+            <field name="provider_id" ref="tangerine_delivery_nhat_tin.tangerine_delivery_nhat_tin_provider"/>
+            <field name="carrier_status_id" ref="tangerine_delivery_nhat_tin.ntl_status_15"/>
+            <field name="standard_status_id" ref="tangerine_delivery_base.standard_status_in_transit"/>
+            <field name="sequence">50</field>
+        </record>
+
+        <!-- Nhat Tin: 13 - Delivering → Delivering -->
+        <record id="ntl_mapping_13" model="delivery.status.mapping">
+            <field name="provider_id" ref="tangerine_delivery_nhat_tin.tangerine_delivery_nhat_tin_provider"/>
+            <field name="carrier_status_id" ref="tangerine_delivery_nhat_tin.ntl_status_13"/>
+            <field name="standard_status_id" ref="tangerine_delivery_base.standard_status_delivering"/>
+            <field name="sequence">60</field>
+        </record>
+
+        <!-- Nhat Tin: 4 - Delivered → Delivered -->
+        <record id="ntl_mapping_4" model="delivery.status.mapping">
+            <field name="provider_id" ref="tangerine_delivery_nhat_tin.tangerine_delivery_nhat_tin_provider"/>
+            <field name="carrier_status_id" ref="tangerine_delivery_nhat_tin.ntl_status_4"/>
+            <field name="standard_status_id" ref="tangerine_delivery_base.standard_status_delivered"/>
+            <field name="sequence">70</field>
+        </record>
+
+        <!-- Nhat Tin: 1 - Unsuccessful → Failed -->
+        <record id="ntl_mapping_1" model="delivery.status.mapping">
+            <field name="provider_id" ref="tangerine_delivery_nhat_tin.tangerine_delivery_nhat_tin_provider"/>
+            <field name="carrier_status_id" ref="tangerine_delivery_nhat_tin.ntl_status_1"/>
+            <field name="standard_status_id" ref="tangerine_delivery_base.standard_status_failed"/>
+            <field name="sequence">80</field>
+        </record>
+
+        <!-- Nhat Tin: 7 - Could not deliver → Failed -->
+        <record id="ntl_mapping_7" model="delivery.status.mapping">
+            <field name="provider_id" ref="tangerine_delivery_nhat_tin.tangerine_delivery_nhat_tin_provider"/>
+            <field name="carrier_status_id" ref="tangerine_delivery_nhat_tin.ntl_status_7"/>
+            <field name="standard_status_id" ref="tangerine_delivery_base.standard_status_failed"/>
+            <field name="sequence">90</field>
+        </record>
+
+        <!-- Nhat Tin: 11 - Delivery exception → Failed -->
+        <record id="ntl_mapping_11" model="delivery.status.mapping">
+            <field name="provider_id" ref="tangerine_delivery_nhat_tin.tangerine_delivery_nhat_tin_provider"/>
+            <field name="carrier_status_id" ref="tangerine_delivery_nhat_tin.ntl_status_11"/>
+            <field name="standard_status_id" ref="tangerine_delivery_base.standard_status_failed"/>
+            <field name="sequence">100</field>
+        </record>
+
+        <!-- Nhat Tin: 9 - Being returned → Returning -->
+        <record id="ntl_mapping_9" model="delivery.status.mapping">
+            <field name="provider_id" ref="tangerine_delivery_nhat_tin.tangerine_delivery_nhat_tin_provider"/>
+            <field name="carrier_status_id" ref="tangerine_delivery_nhat_tin.ntl_status_9"/>
+            <field name="standard_status_id" ref="tangerine_delivery_base.standard_status_returning"/>
+            <field name="sequence">110</field>
+        </record>
+
+        <!-- Nhat Tin: 16 - Delivering for returning → Returning -->
+        <record id="ntl_mapping_16" model="delivery.status.mapping">
+            <field name="provider_id" ref="tangerine_delivery_nhat_tin.tangerine_delivery_nhat_tin_provider"/>
+            <field name="carrier_status_id" ref="tangerine_delivery_nhat_tin.ntl_status_16"/>
+            <field name="standard_status_id" ref="tangerine_delivery_base.standard_status_returning"/>
+            <field name="sequence">120</field>
+        </record>
+
+        <!-- Nhat Tin: 10 - Returned → Returned -->
+        <record id="ntl_mapping_10" model="delivery.status.mapping">
+            <field name="provider_id" ref="tangerine_delivery_nhat_tin.tangerine_delivery_nhat_tin_provider"/>
+            <field name="carrier_status_id" ref="tangerine_delivery_nhat_tin.ntl_status_10"/>
+            <field name="standard_status_id" ref="tangerine_delivery_base.standard_status_returned"/>
+            <field name="sequence">130</field>
+        </record>
+
+        <!-- Nhat Tin: 6 - Canceled → Cancelled -->
+        <record id="ntl_mapping_6" model="delivery.status.mapping">
+            <field name="provider_id" ref="tangerine_delivery_nhat_tin.tangerine_delivery_nhat_tin_provider"/>
+            <field name="carrier_status_id" ref="tangerine_delivery_nhat_tin.ntl_status_6"/>
+            <field name="standard_status_id" ref="tangerine_delivery_base.standard_status_cancelled"/>
+            <field name="sequence">140</field>
+        </record>
+    </data>
+</odoo>
