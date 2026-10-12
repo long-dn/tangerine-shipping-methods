@@ -1,0 +1,3 @@
+id,name,model_id,group_id/id,operation,domain
+access_ahamove_service,access_ahamove_service,ahamove.service,base.group_user,crud,
+access_ahamove_service_request,access_ahamove_service_request,ahamove.service.request,base.group_user,crud,

@@ -10,7 +10,7 @@
                         name="ahamove_service_sync"
                         type="object"
                         string="Ahamove Service Sync"
-                        icon="fa-refresh"
+                        icon="refresh"
                 />
             </xpath>
             <xpath expr="//notebook[last()]" position="inside">
@@ -38,14 +38,14 @@
                             name="ahamove_service_sync"
                             type="object"
                             string="Ahamove Service Sync"
-                            icon="fa-refresh"
+                            icon="refresh"
                     />
                 </header>
                 <button type="object"
                         name="ahamove_service_sync"
                         class="btn btn-primary"
                         string="Ahamove Service Sync"
-                        icon="fa-refresh"
+                        icon="refresh"
                 />
             </xpath>
         </field>

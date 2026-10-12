@@ -6,10 +6,10 @@
     'website': 'https://github.com/long-dn',
     'category': 'Inventory/Delivery',
     'support': 'odoo.tangerine@gmail.com',
-    'version': '1.0.0',
+    'version': '20.0.1.0.0',
     'depends': ['tangerine_delivery_base'],
     'data': [
-        'security/ir.model.access.csv',
+        'security/ir.access.csv',
         'data/res_partner_data.xml',
         'data/delivery_ahamove_data.xml',
         'data/ahamove_route_api_data.xml',

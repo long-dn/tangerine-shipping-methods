@@ -5,22 +5,22 @@
         <field name="model">choose.delivery.carrier</field>
         <field name="inherit_id" ref="delivery.choose_delivery_carrier_view_form" />
         <field name="arch" type="xml">
-            <field name="carrier_id" position="after">
-                <field name="ahamove_service_id" invisible="delivery_type != 'ahamove'"/>
+            <label for="display_price" position="before">
+                <field name="ahamove_service_id" invisible="delivery_type != 'ahamove'" readonly="is_loading_prices"/>
                 <field name="ahamove_service_request_ids"
                        widget="many2many_tags"
                        options="{'no_create': True}"
                        invisible="delivery_type != 'ahamove'"
-                       domain="ahamove_service_request_domain"
+                       readonly="is_loading_prices"
+                       domain="[('service_id', '=?', ahamove_service_id)]"
                 />
-                <field name="ahamove_service_request_domain" invisible="1"/>
                 <label for="is_cod" invisible="delivery_type != 'ahamove'"/>
                 <div class="o_row" invisible="delivery_type != 'ahamove'">
                     <field name="is_cod" style="max-width: 15%;" widget="boolean_toggle"/>
                     <field name="cod_amount" invisible="not is_cod"/>
                 </div>
-                <field name="promo_code" invisible="delivery_type != 'ahamove'"/>
-            </field>
+                <field name="promo_code" invisible="delivery_type != 'ahamove'" readonly="is_loading_prices"/>
+            </label>
         </field>
     </record>
 </odoo>

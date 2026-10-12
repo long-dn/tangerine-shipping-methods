@@ -16,7 +16,6 @@ class ProviderAhamove(models.Model):
     ], ondelete={'ahamove': lambda recs: recs.write({'delivery_type': 'fixed', 'fixed_price': 0})})
 
     ahamove_partner_phone = fields.Char(string='Phone')
-    ahamove_service_request_domain = fields.Binary(default=[], store=False)
     default_ahamove_service_id = fields.Many2one('ahamove.service', string='Service Type')
     default_ahamove_service_request_ids = fields.Many2many(
         'ahamove.service.request',
@@ -26,12 +25,6 @@ class ProviderAhamove(models.Model):
         string='Request Type'
     )
     default_ahamove_payment_method = fields.Selection(selection=settings.payment_method.value, string='Payment Method')
-
-    @api.onchange('default_ahamove_service_id')
-    def _onchange_default_ahamove_service_id(self):
-        for rec in self:
-            if rec.default_ahamove_service_id:
-                rec.ahamove_service_request_domain = [('service_id', '=', rec.default_ahamove_service_id.id)]
 
     def _ahamove_payload_get_token(self):
         return {

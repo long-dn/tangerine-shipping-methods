@@ -15,14 +15,13 @@
                         <field name="cash_on_delivery" style="max-width: 15%;" widget="boolean_toggle" readonly="carrier_tracking_ref"/>
                         <field name="cash_on_delivery_amount" readonly="carrier_tracking_ref" invisible="not cash_on_delivery"/>
                     </div>
-                    <field name="ahamove_service_request_domain" invisible="1"/>
                     <field name="ahamove_service_id"
                            required="delivery_type == 'ahamove'"
                            options="{'no_create_edit': True}"
                     />
                     <field name="ahamove_service_request_ids"
                            widget="many2many_tags"
-                           domain="ahamove_service_request_domain"
+                           domain="[('service_id', '=?', ahamove_service_id)]"
                            options="{'no_create_edit': True}"
                     />
                     <field name="ahamove_payment_method" required="delivery_type == 'ahamove'"/>

@@ -27,7 +27,7 @@
             <field name="base_weight_unit">G</field>
             <field name="external_carrier_id" ref="ahamove_delivery_carrier_partner"/>
             <field name="carrier_description">Ahamove APIs will allow shipper to easily place, cancel, get quotes and track the order via simple integration</field>
-            <field name="image" type="base64" file="tangerine_delivery_ahamove/static/description/icon.png"/>
+            <field name="image" type="bytes" file="tangerine_delivery_ahamove/static/description/icon.png"/>
         </record>
 
         <function model="delivery.carrier" name="set_webhook_url">
