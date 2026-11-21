@@ -53,6 +53,7 @@ websiteSaleAddress.include({
         let choices = [];
         if (stateId) {
             const data = await rpc(`/my/address/state_vn_info/${stateId}`);
+            if (parseInt(this.addressForm.state_id.value) !== stateId || this._getSelectedCountryCode() !== "VN") return;
             choices = data.wards;
         }
         this._changeOption(selectWards, choices, selectWards.value);

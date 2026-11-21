@@ -1,3 +1,4 @@
+from odoo import _
 from odoo.http import request, route
 from odoo.addons.portal.controllers.portal import CustomerPortal
 
@@ -16,6 +17,7 @@ class CustomerPortalModesk(CustomerPortal):
     def _get_mandatory_fields(self):
         mandatory_fields = super()._get_mandatory_fields()
         if self._is_vn_portal_form():
+            mandatory_fields = [fname for fname in mandatory_fields if fname != 'city']
             mandatory_fields += [fname for fname in ('state_id', 'ward_id') if fname not in mandatory_fields]
         return mandatory_fields
 
@@ -26,10 +28,18 @@ class CustomerPortalModesk(CustomerPortal):
         return optional_fields
 
     def details_form_validate(self, data, partner_creation=False):
+        request.update_context(portal_form_country_id=data.get('country_id'))
         error, error_message = super().details_form_validate(data, partner_creation=partner_creation)
         if 'ward_id' in data:
             # the account route only converts country_id and state_id to ids
             data['ward_id'] = self._to_record_id(data['ward_id'])
+        if self._is_vn_portal_form() and data.get('ward_id'):
+            ward = request.env['res.country.ward'].sudo().browse(data['ward_id']).exists()
+            if not ward or not ward.active or ward.state_id.id != self._to_record_id(data.get('state_id')):
+                error['ward_id'] = 'error'
+                error_message.append(_('Select a ward belonging to the chosen province.'))
+        elif not self._is_vn_portal_form():
+            data['ward_id'] = False
         return error, error_message
 
     @route()
@@ -57,5 +67,6 @@ class CustomerPortalModesk(CustomerPortal):
     )
     def state_vn_infos(self, state, **kw):
         return {
-            'wards': [(w.id, w.name, w.code) for w in state.sudo().ward_ids]
+            'wards': [(w.id, w._vietnamese_address_name(), w.code) for w in state.sudo().ward_ids
+                      if state.active and state.country_id.code == 'VN']
         }

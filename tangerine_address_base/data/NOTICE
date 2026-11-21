@@ -1,0 +1,40 @@
+Vietnamese administrative catalogue and whole-unit succession mapping adapted from
+Địa Chỉ Việt (https://diachiviet.com), release 2026-11-02, effective through 2026-09-20.
+Source: https://github.com/HuyChuong/vietnam-administrative-units/tree/17bc7dd44aa71b1aff671664c6ccb2bd21ed5e32
+Catalogue fields were converted to Odoo XML. The migration includes only uniquely
+identified whole-unit successors of wards shipped in the historical Odoo CSV.
+Licence: https://creativecommons.org/licenses/by/4.0/
+
+Dữ liệu mở đơn vị hành chính Việt Nam - Địa Chỉ Việt (diachiviet.com)
+
+Phần tổng hợp, chuẩn hoá và đối chiếu của Địa Chỉ Việt được cấp phép CC BY 4.0 (xem LICENSE).
+
+Văn bản quy phạm pháp luật và văn bản hành chính không thuộc đối tượng bảo hộ quyền tác giả (Điều 15 Luật Sở hữu trí tuệ).
+
+Bộ dữ liệu có dùng danh mục đơn vị hành chính trước 01/07/2025 từ dự án dưới đây, theo giấy phép MIT:
+
+----------------------------------------------------------------
+thanglequoc/vietnamese-provinces-database
+https://github.com/thanglequoc/vietnamese-provinces-database
+
+MIT License
+
+Copyright (c) 2021 Thang Le Quoc
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.

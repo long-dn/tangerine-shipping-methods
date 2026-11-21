@@ -64,3 +64,11 @@ class Ward(models.Model):
     def _compute_ward_name_without_accent(self):
         for rec in self:
             rec.ward_name_without_accent = vh.no_accent_vietnamese(rec.name) if rec.name else False
+
+    def _vietnamese_address_name(self):
+        if not self:
+            return ''
+        self.ensure_one()
+        labels = {'ward': 'Phường', 'commune': 'Xã', 'special_zone': 'Đặc khu'}
+        label = labels.get(self.ward_type)
+        return '%s %s' % (label, self.name) if label and self.active else (self.name or '')

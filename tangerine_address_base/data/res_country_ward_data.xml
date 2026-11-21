@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-    <data noupdate="1">
+    <data>
         <record id="ward_vn_1" model="res.country.ward">
             <field name="name">Ba Đình</field>
             <field name="code">00004</field>
@@ -1479,7 +1479,7 @@
         </record>
 
         <record id="ward_vn_212" model="res.country.ward">
-            <field name="name">Thuận Hoà</field>
+            <field name="name">Thuận Hòa</field>
             <field name="code">00922</field>
             <field name="ward_type">commune</field>
             <field name="state_id" ref="base.state_vn_VN-07"/>
@@ -1850,7 +1850,7 @@
         </record>
 
         <record id="ward_vn_265" model="res.country.ward">
-            <field name="name">Chiêm Hoá</field>
+            <field name="name">Chiêm Hóa</field>
             <field name="code">02287</field>
             <field name="ward_type">commune</field>
             <field name="state_id" ref="base.state_vn_VN-07"/>
@@ -1913,7 +1913,7 @@
         </record>
 
         <record id="ward_vn_274" model="res.country.ward">
-            <field name="name">Hoà An</field>
+            <field name="name">Hòa An</field>
             <field name="code">02353</field>
             <field name="ward_type">commune</field>
             <field name="state_id" ref="base.state_vn_VN-07"/>
@@ -1976,7 +1976,7 @@
         </record>
 
         <record id="ward_vn_283" model="res.country.ward">
-            <field name="name">Thái Hoà</field>
+            <field name="name">Thái Hòa</field>
             <field name="code">02419</field>
             <field name="ward_type">commune</field>
             <field name="state_id" ref="base.state_vn_VN-07"/>
@@ -2130,7 +2130,7 @@
         </record>
 
         <record id="ward_vn_305" model="res.country.ward">
-            <field name="name">Sơn Thuỷ</field>
+            <field name="name">Sơn Thủy</field>
             <field name="code">02620</field>
             <field name="ward_type">commune</field>
             <field name="state_id" ref="base.state_vn_VN-07"/>
@@ -5308,7 +5308,7 @@
         </record>
 
         <record id="ward_vn_759" model="res.country.ward">
-            <field name="name">Đặc khu Vân Đồn</field>
+            <field name="name">Vân Đồn</field>
             <field name="code">06994</field>
             <field name="ward_type">special_zone</field>
             <field name="state_id" ref="base.state_vn_VN-13"/>
@@ -5464,7 +5464,7 @@
         <record id="ward_vn_781" model="res.country.ward">
             <field name="name">Bố Hạ</field>
             <field name="code">07294</field>
-            <field name="ward_type">commune</field>
+            <field name="ward_type">ward</field>
             <field name="state_id" ref="base.state_vn_VN-56"/>
         </record>
 
@@ -5476,7 +5476,7 @@
         </record>
 
         <record id="ward_vn_783" model="res.country.ward">
-            <field name="name">Phúc Hòa</field>
+            <field name="name">Phúc Hoà</field>
             <field name="code">07330</field>
             <field name="ward_type">commune</field>
             <field name="state_id" ref="base.state_vn_VN-56"/>
@@ -5506,7 +5506,7 @@
         <record id="ward_vn_787" model="res.country.ward">
             <field name="name">Lạng Giang</field>
             <field name="code">07375</field>
-            <field name="ward_type">commune</field>
+            <field name="ward_type">ward</field>
             <field name="state_id" ref="base.state_vn_VN-56"/>
         </record>
 
@@ -5520,7 +5520,7 @@
         <record id="ward_vn_789" model="res.country.ward">
             <field name="name">Kép</field>
             <field name="code">07399</field>
-            <field name="ward_type">commune</field>
+            <field name="ward_type">ward</field>
             <field name="state_id" ref="base.state_vn_VN-56"/>
         </record>
 
@@ -5541,7 +5541,7 @@
         <record id="ward_vn_792" model="res.country.ward">
             <field name="name">Lục Nam</field>
             <field name="code">07444</field>
-            <field name="ward_type">commune</field>
+            <field name="ward_type">ward</field>
             <field name="state_id" ref="base.state_vn_VN-56"/>
         </record>
 
@@ -5805,9 +5805,9 @@
         </record>
 
         <record id="ward_vn_830" model="res.country.ward">
-            <field name="name">Hiệp Hoà</field>
+            <field name="name">Hiệp Hòa</field>
             <field name="code">07840</field>
-            <field name="ward_type">commune</field>
+            <field name="ward_type">ward</field>
             <field name="state_id" ref="base.state_vn_VN-56"/>
         </record>
 
@@ -5849,7 +5849,7 @@
         <record id="ward_vn_836" model="res.country.ward">
             <field name="name">Yên Phong</field>
             <field name="code">09193</field>
-            <field name="ward_type">commune</field>
+            <field name="ward_type">ward</field>
             <field name="state_id" ref="base.state_vn_VN-56"/>
         </record>
 
@@ -5912,7 +5912,7 @@
         <record id="ward_vn_845" model="res.country.ward">
             <field name="name">Phù Lãng</field>
             <field name="code">09292</field>
-            <field name="ward_type">commune</field>
+            <field name="ward_type">ward</field>
             <field name="state_id" ref="base.state_vn_VN-56"/>
         </record>
 
@@ -5933,14 +5933,14 @@
         <record id="ward_vn_848" model="res.country.ward">
             <field name="name">Chi Lăng</field>
             <field name="code">09313</field>
-            <field name="ward_type">commune</field>
+            <field name="ward_type">ward</field>
             <field name="state_id" ref="base.state_vn_VN-56"/>
         </record>
 
         <record id="ward_vn_849" model="res.country.ward">
             <field name="name">Tiên Du</field>
             <field name="code">09319</field>
-            <field name="ward_type">commune</field>
+            <field name="ward_type">ward</field>
             <field name="state_id" ref="base.state_vn_VN-56"/>
         </record>
 
@@ -6052,7 +6052,7 @@
         <record id="ward_vn_865" model="res.country.ward">
             <field name="name">Gia Bình</field>
             <field name="code">09454</field>
-            <field name="ward_type">commune</field>
+            <field name="ward_type">ward</field>
             <field name="state_id" ref="base.state_vn_VN-56"/>
         </record>
 
@@ -6073,7 +6073,7 @@
         <record id="ward_vn_868" model="res.country.ward">
             <field name="name">Nhân Thắng</field>
             <field name="code">09475</field>
-            <field name="ward_type">commune</field>
+            <field name="ward_type">ward</field>
             <field name="state_id" ref="base.state_vn_VN-56"/>
         </record>
 
@@ -6087,7 +6087,7 @@
         <record id="ward_vn_870" model="res.country.ward">
             <field name="name">Lương Tài</field>
             <field name="code">09496</field>
-            <field name="ward_type">commune</field>
+            <field name="ward_type">ward</field>
             <field name="state_id" ref="base.state_vn_VN-56"/>
         </record>
 
@@ -11307,7 +11307,7 @@
         </record>
 
         <record id="ward_vn_10375" model="res.country.ward">
-            <field name="name">Nguyễn Uý</field>
+            <field name="name">Nguyễn Úy</field>
             <field name="code">13396</field>
             <field name="ward_type">ward</field>
             <field name="state_id" ref="base.state_vn_VN-18"/>
@@ -11762,7 +11762,7 @@
         </record>
 
         <record id="ward_vn_10440" model="res.country.ward">
-            <field name="name">Giao Thuỷ</field>
+            <field name="name">Giao Thủy</field>
             <field name="code">14167</field>
             <field name="ward_type">commune</field>
             <field name="state_id" ref="base.state_vn_VN-18"/>
@@ -11776,7 +11776,7 @@
         </record>
 
         <record id="ward_vn_10442" model="res.country.ward">
-            <field name="name">Giao Hoà</field>
+            <field name="name">Giao Hòa</field>
             <field name="code">14182</field>
             <field name="ward_type">commune</field>
             <field name="state_id" ref="base.state_vn_VN-18"/>
@@ -13463,7 +13463,7 @@
         </record>
 
         <record id="ward_vn_11190" model="res.country.ward">
-            <field name="name">Đặc khu Lý Sơn</field>
+            <field name="name">Lý Sơn</field>
             <field name="code">21548</field>
             <field name="ward_type">special_zone</field>
             <field name="state_id" ref="base.state_vn_VN-29"/>
@@ -13855,7 +13855,7 @@
         </record>
 
         <record id="ward_vn_11246" model="res.country.ward">
-            <field name="name">Đặc khu Hoàng Sa</field>
+            <field name="name">Hoàng Sa</field>
             <field name="code">20333</field>
             <field name="ward_type">special_zone</field>
             <field name="state_id" ref="base.state_vn_VN-DN"/>
@@ -16025,7 +16025,7 @@
         </record>
 
         <record id="ward_vn_12113" model="res.country.ward">
-            <field name="name">Hòa Bình</field>
+            <field name="name">Hoà Bình</field>
             <field name="code">31891</field>
             <field name="ward_type">commune</field>
             <field name="state_id" ref="base.state_vn_VN-59"/>
@@ -16144,7 +16144,7 @@
         </record>
 
         <record id="ward_vn_12130" model="res.country.ward">
-            <field name="name">Hòa Thành</field>
+            <field name="name">Hoà Thành</field>
             <field name="code">32041</field>
             <field name="ward_type">ward</field>
             <field name="state_id" ref="base.state_vn_VN-59"/>
@@ -18629,7 +18629,7 @@
         </record>
 
         <record id="ward_vn_12485" model="res.country.ward">
-            <field name="name">Nguyệt Hóa</field>
+            <field name="name">Nguyệt Hoá</field>
             <field name="code">29254</field>
             <field name="ward_type">ward</field>
             <field name="state_id" ref="base.state_vn_VN-49"/>
@@ -18713,7 +18713,7 @@
         </record>
 
         <record id="ward_vn_12497" model="res.country.ward">
-            <field name="name">Hùng Hòa</field>
+            <field name="name">Hùng Hoà</field>
             <field name="code">29362</field>
             <field name="ward_type">commune</field>
             <field name="state_id" ref="base.state_vn_VN-49"/>
@@ -18727,7 +18727,7 @@
         </record>
 
         <record id="ward_vn_12499" model="res.country.ward">
-            <field name="name">Tân Hòa</field>
+            <field name="name">Tân Hoà</field>
             <field name="code">29371</field>
             <field name="ward_type">commune</field>
             <field name="state_id" ref="base.state_vn_VN-49"/>
@@ -18748,7 +18748,7 @@
         </record>
 
         <record id="ward_vn_12502" model="res.country.ward">
-            <field name="name">Hòa Thuận</field>
+            <field name="name">Hoà Thuận</field>
             <field name="code">29398</field>
             <field name="ward_type">ward</field>
             <field name="state_id" ref="base.state_vn_VN-49"/>
@@ -18874,7 +18874,7 @@
         </record>
 
         <record id="ward_vn_12520" model="res.country.ward">
-            <field name="name">Trường Long Hòa</field>
+            <field name="name">Trường Long Hoà</field>
             <field name="code">29516</field>
             <field name="ward_type">ward</field>
             <field name="state_id" ref="base.state_vn_VN-49"/>
@@ -21088,7 +21088,7 @@
         <record id="ward_vn_13276" model="res.country.ward">
             <field name="name">Lộc Ninh</field>
             <field name="code">25270</field>
-            <field name="ward_type">commune</field>
+            <field name="ward_type">ward</field>
             <field name="state_id" ref="base.state_vn_VN-39"/>
         </record>
 
@@ -21186,14 +21186,14 @@
         <record id="ward_vn_13290" model="res.country.ward">
             <field name="name">Tân Khai</field>
             <field name="code">25357</field>
-            <field name="ward_type">commune</field>
+            <field name="ward_type">ward</field>
             <field name="state_id" ref="base.state_vn_VN-39"/>
         </record>
 
         <record id="ward_vn_13291" model="res.country.ward">
             <field name="name">Đồng Phú</field>
             <field name="code">25363</field>
-            <field name="ward_type">commune</field>
+            <field name="ward_type">ward</field>
             <field name="state_id" ref="base.state_vn_VN-39"/>
         </record>
 
@@ -21361,7 +21361,7 @@
         <record id="ward_vn_13315" model="res.country.ward">
             <field name="name">Tân Phú</field>
             <field name="code">26116</field>
-            <field name="ward_type">commune</field>
+            <field name="ward_type">ward</field>
             <field name="state_id" ref="base.state_vn_VN-39"/>
         </record>
 
@@ -21396,7 +21396,7 @@
         <record id="ward_vn_13320" model="res.country.ward">
             <field name="name">Trị An</field>
             <field name="code">26170</field>
-            <field name="ward_type">commune</field>
+            <field name="ward_type">ward</field>
             <field name="state_id" ref="base.state_vn_VN-39"/>
         </record>
 
@@ -21459,7 +21459,7 @@
         <record id="ward_vn_13329" model="res.country.ward">
             <field name="name">Trảng Bom</field>
             <field name="code">26248</field>
-            <field name="ward_type">commune</field>
+            <field name="ward_type">ward</field>
             <field name="state_id" ref="base.state_vn_VN-39"/>
         </record>
 
@@ -21508,7 +21508,7 @@
         <record id="ward_vn_13336" model="res.country.ward">
             <field name="name">Dầu Giây</field>
             <field name="code">26326</field>
-            <field name="ward_type">commune</field>
+            <field name="ward_type">ward</field>
             <field name="state_id" ref="base.state_vn_VN-39"/>
         </record>
 
@@ -21550,7 +21550,7 @@
         <record id="ward_vn_13342" model="res.country.ward">
             <field name="name">Long Thành</field>
             <field name="code">26368</field>
-            <field name="ward_type">commune</field>
+            <field name="ward_type">ward</field>
             <field name="state_id" ref="base.state_vn_VN-39"/>
         </record>
 
@@ -21606,7 +21606,7 @@
         <record id="ward_vn_13350" model="res.country.ward">
             <field name="name">Xuân Lộc</field>
             <field name="code">26425</field>
-            <field name="ward_type">commune</field>
+            <field name="ward_type">ward</field>
             <field name="state_id" ref="base.state_vn_VN-39"/>
         </record>
 
@@ -21648,7 +21648,7 @@
         <record id="ward_vn_13356" model="res.country.ward">
             <field name="name">Nhơn Trạch</field>
             <field name="code">26485</field>
-            <field name="ward_type">commune</field>
+            <field name="ward_type">ward</field>
             <field name="state_id" ref="base.state_vn_VN-39"/>
         </record>
 
@@ -21674,7 +21674,7 @@
         </record>
 
         <record id="ward_vn_13360" model="res.country.ward">
-            <field name="name">Phú Thuỷ</field>
+            <field name="name">Phú Thủy</field>
             <field name="code">22924</field>
             <field name="ward_type">ward</field>
             <field name="state_id" ref="base.state_vn_VN-35"/>
@@ -21975,7 +21975,7 @@
         </record>
 
         <record id="ward_vn_13403" model="res.country.ward">
-            <field name="name">Đặc khu Phú Quý</field>
+            <field name="name">Phú Quý</field>
             <field name="code">23272</field>
             <field name="ward_type">special_zone</field>
             <field name="state_id" ref="base.state_vn_VN-35"/>
@@ -22220,7 +22220,7 @@
         </record>
 
         <record id="ward_vn_13438" model="res.country.ward">
-            <field name="name">B’Lao</field>
+            <field name="name">B'Lao</field>
             <field name="code">24829</field>
             <field name="ward_type">ward</field>
             <field name="state_id" ref="base.state_vn_VN-35"/>
@@ -22325,7 +22325,7 @@
         </record>
 
         <record id="ward_vn_13453" model="res.country.ward">
-            <field name="name">D’Ran</field>
+            <field name="name">D'Ran</field>
             <field name="code">24934</field>
             <field name="ward_type">commune</field>
             <field name="state_id" ref="base.state_vn_VN-35"/>
@@ -22822,7 +22822,7 @@
         </record>
 
         <record id="ward_vn_13524" model="res.country.ward">
-            <field name="name">Ea H’Leo</field>
+            <field name="name">Ea H'Leo</field>
             <field name="code">24184</field>
             <field name="ward_type">commune</field>
             <field name="state_id" ref="base.state_vn_VN-33"/>
@@ -22927,14 +22927,14 @@
         </record>
 
         <record id="ward_vn_13539" model="res.country.ward">
-            <field name="name">Cư M’gar</field>
+            <field name="name">Cư M'gar</field>
             <field name="code">24280</field>
             <field name="ward_type">commune</field>
             <field name="state_id" ref="base.state_vn_VN-33"/>
         </record>
 
         <record id="ward_vn_13540" model="res.country.ward">
-            <field name="name">Ea M’Droh</field>
+            <field name="name">Ea M'Droh</field>
             <field name="code">24286</field>
             <field name="ward_type">commune</field>
             <field name="state_id" ref="base.state_vn_VN-33"/>
@@ -23053,7 +23053,7 @@
         </record>
 
         <record id="ward_vn_13557" model="res.country.ward">
-            <field name="name">M’Drắk</field>
+            <field name="name">M'Drắk</field>
             <field name="code">24412</field>
             <field name="ward_type">commune</field>
             <field name="state_id" ref="base.state_vn_VN-33"/>
@@ -23074,7 +23074,7 @@
         </record>
 
         <record id="ward_vn_13560" model="res.country.ward">
-            <field name="name">Cư M’ta</field>
+            <field name="name">Cư M'ta</field>
             <field name="code">24436</field>
             <field name="ward_type">commune</field>
             <field name="state_id" ref="base.state_vn_VN-33"/>

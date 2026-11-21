@@ -47,6 +47,7 @@ portalDetails.include({
         let wards = [];
         if (stateId) {
             const data = await rpc(`/my/address/state_vn_info/${stateId}`);
+            if (parseInt(this.$state.val()) !== stateId || !this._isVietnamSelected()) return;
             wards = data.wards;
         }
         this._setWardOptions(wards);

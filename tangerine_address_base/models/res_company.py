@@ -1,4 +1,4 @@
-from odoo import models, fields
+from odoo import models, fields, api
 
 
 class ResCompany(models.Model):
@@ -27,3 +27,8 @@ class ResCompany(models.Model):
     def _inverse_ward(self):
         for company in self:
             company.partner_id.ward_id = company.ward_id
+
+    @api.onchange('state_id', 'country_id')
+    def _onchange_vietnam_ward(self):
+        if self.ward_id and (self.ward_id.state_id != self.state_id or self.state_id.country_id != self.country_id):
+            self.ward_id = False

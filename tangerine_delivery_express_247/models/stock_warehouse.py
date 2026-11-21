@@ -21,9 +21,8 @@ class Warehouse(models.Model):
                 'Address': warehouse.partner_id.shipping_address,
                 'ContactName': warehouse.partner_id.name,
                 'ContactPhone': convert_e164_to_classic(warehouse.partner_id.phone or warehouse.partner_id.mobile),
-                'DistrictName': warehouse.partner_id.district_id.name,
                 'ProvinceName': warehouse.partner_id.state_id.name,
-                'WardName': warehouse.partner_id.ward_id.name,
+                'WardName': warehouse.partner_id.ward_id._vietnamese_address_name(),
                 'CusWarehouseID': warehouse.code,
                 'CusWarehouseName': warehouse.name,
             }

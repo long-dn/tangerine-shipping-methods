@@ -6,7 +6,7 @@
     'website': 'https://github.com/long-dn',
     'license': 'LGPL-3',
     'category': 'Extra Tools',
-    'version': '18.0.2.0.0',
+    'version': '18.0.3.0.0',
     'support': 'odoo.tangerine@gmail.com',
     'depends': ['base', 'contacts'],
     'data': [
