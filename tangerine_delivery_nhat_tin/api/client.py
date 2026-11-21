@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 import json
+
+import requests
 from dataclasses import dataclass
 from odoo import _
 from odoo.tools.safe_eval import safe_eval
@@ -19,7 +21,23 @@ class Client:
 
     def _build_header(self):
         headers = json.loads(safe_eval(self.conn.endpoint.headers))
-        if self.conn.endpoint.is_need_access_token:
+        if self.conn.endpoint.code in (settings.ntl_calculate_price_route_code.value,
+                                       settings.ntl_create_bill_route_code.value):
+            provider = self.conn.provider
+            try:
+                response = requests.post(
+                    URLBuilder.builder(host=provider.domain, routes=['/v1/auth/sign-in']),
+                    json={'username': provider.username, 'password': provider.password},
+                    timeout=15,
+                )
+                response.raise_for_status()
+                token = (response.json().get('data') or {}).get('jwt_token')
+            except (requests.RequestException, ValueError) as exc:
+                raise UserError(_('Nhất Tín authentication failed. Check the API account.')) from exc
+            if not token:
+                raise UserError(_('Nhất Tín did not return an access token.'))
+            headers['Authorization'] = 'Bearer ' + token
+        elif self.conn.endpoint.is_need_access_token:
             headers['username'] = self.conn.provider.username
             headers['password'] = self.conn.provider.password
         return headers

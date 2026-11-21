@@ -73,3 +73,8 @@ class CountryState(models.Model):
     def _compute_state_name_without_accent(self):
         for rec in self:
             rec.state_name_without_accent = vh.no_accent_vietnamese(rec.name)
+
+    @api.model
+    def _archive_merged_vietnam_states(self, codes):
+        states = self.search([('country_id', '=', self.env.ref('base.vn').id), ('code', 'in', codes)])
+        states.write({'active': False})

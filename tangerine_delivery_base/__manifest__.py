@@ -7,7 +7,7 @@
     'license': 'LGPL-3',
     'category': 'Inventory/Delivery',
     'support': 'odoo.tangerine@gmail.com',
-    'version': '1.0.0',
+    'version': '19.0.3.0.0',
     'depends': ['mail', 'base', 'sale_stock', 'stock_delivery', 'purchase', 'tangerine_address_base'],
     'data': [
         'security/ir.model.access.csv',

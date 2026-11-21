@@ -29,20 +29,24 @@ patch(CustomerAddress.prototype, {
 
     async _onChangeCountry(init = false) {
         await this.waitFor(super._onChangeCountry(init));
+        if (!this.elementWards) return;
         if (this._getSelectedCountryCode() !== 'VN') {
             this._changeOption(this.elementWards, []);
             this._hideInput('ward_id');
+        } else {
+            await this.onChangeState();
         }
     },
 
     async onChangeState() {
         await this.waitFor(super.onChangeState());
-        if (this._getSelectedCountryCode() !== 'VN') return;
+        if (!this.elementWards || this._getSelectedCountryCode() !== 'VN') return;
         const stateId = this.elementState.value;
         const currentWardId = this.elementWards ? this.elementWards.value : null;
         let choices = [];
         if (stateId) {
             const data = await this.waitFor(rpc(`/my/address/state_vn_info/${stateId}`, {}));
+            if (this.elementState.value !== stateId || this._getSelectedCountryCode() !== 'VN') return;
             choices = data.wards;
         }
         this._changeOption(this.elementWards, choices, currentWardId);
