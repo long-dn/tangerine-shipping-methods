@@ -13,7 +13,7 @@
                         t-as="w"
                         t-att-value="w.id"
                         t-att-selected="w.id == (int(ward_id) if ward_id else partner_sudo.ward_id.id if partner_sudo else False)"
-                        t-out="w.name"
+                        t-out="w._vietnamese_address_name()"
                     />
                 </select>
             </div>

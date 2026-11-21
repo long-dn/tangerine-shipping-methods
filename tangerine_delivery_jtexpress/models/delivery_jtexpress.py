@@ -141,11 +141,11 @@ class ProviderJTExpress(models.Model):
             'productType': 'EXPRESS',
             'sender': {
                 'prov': warehouse.state_id.name,
-                'area': warehouse.ward_id.name
+                'area': warehouse.ward_id._vietnamese_address_name()
             },
             'receiver': {
                 'prov': recipient.state_id.name,
-                'area': recipient.ward_id.name
+                'area': recipient.ward_id._vietnamese_address_name()
             },
         }
 
@@ -221,18 +221,14 @@ class ProviderJTExpress(models.Model):
                 'name': sender_id.name or '',
                 'mobile': standardization_e164(sender_phone),
                 'prov': sender_id.state_id.name if sender_id.state_id else '',
-                'area': (sender_id.x_ward_id.name
-                         if hasattr(sender_id, 'x_ward_id') and sender_id.x_ward_id
-                         else ''),
+                'area': sender_id.ward_id._vietnamese_address_name(),
                 'address': sender_id.street or '',
             },
             'receiver': {
                 'name': recipient_id.name or '',
                 'mobile': standardization_e164(receiver_phone),
                 'prov': recipient_id.state_id.name if recipient_id.state_id else '',
-                'area': (recipient_id.x_ward_id.name
-                         if hasattr(recipient_id, 'x_ward_id') and recipient_id.x_ward_id
-                         else ''),
+                'area': recipient_id.ward_id._vietnamese_address_name(),
                 'address': recipient_id.street or '',
             },
             'packageInfo': {
