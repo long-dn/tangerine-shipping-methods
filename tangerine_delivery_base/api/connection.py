@@ -20,7 +20,7 @@ class Connection:
 
     def execute_restful(self, url, method, headers, **kwargs):
         try:
-            _logger.warning(f'[{self.provider.delivery_type.upper()}] - [EXECUTE API]: {method}: {url} - Header: {headers} - Body: {kwargs}')
+            _logger.warning(f'[{self.provider.delivery_type.upper()}] - [EXECUTE API]: {method}: {url} - Body: {kwargs}')
             if method == 'POST':
                 response = requests.post(url=url, headers=headers, json=kwargs)
             elif method == 'GET':

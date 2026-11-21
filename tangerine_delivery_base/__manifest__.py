@@ -7,7 +7,7 @@
     'license': 'LGPL-3',
     'category': 'Inventory/Delivery',
     'support': 'odoo.tangerine@gmail.com',
-    'version': '17.0.1.0',
+    'version': '17.0.3.0.0',
     'depends': [
         'mail',
         'base',

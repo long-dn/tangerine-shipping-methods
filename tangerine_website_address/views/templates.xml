@@ -1,30 +1,26 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <odoo>
+    <template id="vietnam_ward_field">
+        <div class="col-lg-6 mb-2" data-vietnam-ward="" t-att-data-country="request.env.ref('base.vn').id"
+             t-att-data-selected="selected_ward or ''" hidden="hidden">
+            <label for="vn_ward_id">Phường / Xã / Đặc khu</label>
+            <select id="vn_ward_id" name="ward_id" class="form-select" t-att-class="'is-invalid' if error.get('ward_id') else ''">
+                <option value="">Chọn phường, xã hoặc đặc khu</option>
+            </select>
+        </div>
+    </template>
     <template id="address" inherit_id="website_sale.address">
-        <xpath expr="//div[contains(@t-attf-class, 'div_state')]" position="after">
-            <div t-attf-class="#{error.get('district_id') and 'o_has_error'} div_district col-lg-6 mb-2" t-att-style="(not state or not state.district_ids) and 'display: none'">
-                <label class="col-form-label" for="district_id">District</label>
-                <select name="district_id" t-attf-class="form-select #{error.get('district_id') and 'is-invalid' or ''}" data-init="1">
-                    <option value="">District ...</option>
-                    <t t-foreach="state_districts" t-as="d">
-                        <option t-att-value="d.id" t-att-selected="d.id == ('district_id' in checkout and state and checkout['district_id'] != '' and int(checkout['district_id']))">
-                            <t t-esc="d.name" />
-                        </option>
-                    </t>
-                </select>
-            </div>
-
-            <div t-attf-class="#{error.get('ward_id') and 'o_has_error'} div_ward col-lg-6 mb-2" t-att-style="(not district or not district.ward_ids) and 'display: none'">
-                <label class="col-form-label" for="ward_id">Ward</label>
-                <select name="ward_id" t-attf-class="form-select #{error.get('ward_id') and 'is-invalid' or ''}" data-init="1">
-                    <option value="">Ward ...</option>
-                    <t t-foreach="district_wards" t-as="w">
-                        <option t-att-value="w.id" t-att-selected="w.id == ('ward_id' in checkout and district and checkout['ward_id'] != '' and int(checkout['ward_id']))">
-                            <t t-esc="w.name" />
-                        </option>
-                    </t>
-                </select>
-            </div>
+        <xpath expr="//select[@name='state_id']/.." position="after">
+            <t t-call="tangerine_website_address.vietnam_ward_field">
+                <t t-set="selected_ward" t-value="checkout.get('ward_id') if isinstance(checkout, dict) else checkout.ward_id.id"/>
+            </t>
+        </xpath>
+    </template>
+    <template id="portal_my_details_fields" inherit_id="portal.portal_my_details_fields">
+        <xpath expr="//select[@name='state_id']/.." position="after">
+            <t t-call="tangerine_website_address.vietnam_ward_field">
+                <t t-set="selected_ward" t-value="ward_id or partner.ward_id.id"/>
+            </t>
         </xpath>
     </template>
 </odoo>

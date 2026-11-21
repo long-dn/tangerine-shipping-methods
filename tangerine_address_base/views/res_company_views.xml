@@ -7,8 +7,7 @@
         <field name="arch" type="xml">
             <xpath expr="//field[@name='state_id']" position="after">
                 <div>
-                    <field name="district_id" placeholder="Please choose a District" string="District" options="{&quot;no_open&quot;: True}" class="oe_edit_only"/>
-                    <field name="ward_id" placeholder="Please choose a Ward" string="Ward" options="{&quot;no_open&quot;: True}" class="oe_edit_only"/>
+                    <field name="ward_id" invisible="country_id != %(base.vn)d" placeholder="Please choose a Ward" string="Ward / Commune" options="{'no_open': True, 'no_create': True}"/>
                 </div>
             </xpath>
         </field>

@@ -6,7 +6,7 @@
     'website': 'https://github.com/long-dn',
     'category': 'Inventory/Delivery',
     'support': 'odoo.tangerine@gmail.com',
-    'version': '17.0.1.0',
+    'version': '17.0.3.0.0',
     'depends': ['tangerine_delivery_base'],
     'data': [
         'data/delivery_nhat_tin_data.xml',

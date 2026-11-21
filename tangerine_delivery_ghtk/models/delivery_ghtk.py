@@ -29,12 +29,10 @@ class ProviderGHTK(models.Model):
             raise UserError(_('The warehouse is required on sale order'))
         payload = {
             'pick_province': warehouse_id.partner_id.state_id.name,
-            'pick_district': warehouse_id.partner_id.district_id.name,
-            'pick_ward': warehouse_id.partner_id.ward_id.name,
+            'pick_ward': warehouse_id.partner_id.ward_id._vietnamese_address_name(),
             'pick_street': warehouse_id.partner_id.street,
             'province': order.partner_shipping_id.state_id.name,
-            'district': order.partner_shipping_id.district_id.name,
-            'ward': order.partner_shipping_id.ward_id.name,
+            'ward': order.partner_shipping_id.ward_id._vietnamese_address_name(),
             'address': order.partner_shipping_id.street,
             'weight': math.ceil(self.convert_weight(order._get_estimated_weight(), self.base_weight_unit)),
             'value': order.amount_total,
@@ -75,15 +73,13 @@ class ProviderGHTK(models.Model):
                 'pick_name': sender_id.name,
                 'pick_address': sender_id.street,
                 'pick_province': sender_id.state_id.name,
-                'pick_district': sender_id.district_id.name,
-                'pick_ward': sender_id.ward_id.name,
+                'pick_ward': sender_id.ward_id._vietnamese_address_name(),
                 'pick_tel': standardization_e164(sender_id.mobile or sender_id.phone),
                 'tel': standardization_e164(picking.partner_id.mobile or picking.partner_id.phone),
                 'name': picking.partner_id.name,
                 'address': picking.partner_id.street,
                 'province': picking.partner_id.state_id.name,
-                'district': picking.partner_id.district_id.name,
-                'ward': picking.partner_id.ward_id.name,
+                'ward': picking.partner_id.ward_id._vietnamese_address_name(),
                 'hamlet': 'Khác',
                 'note': picking.remarks or '',
                 'is_freeship': 1 if picking.ghtk_payer_type == 'SENDER' else 0,
@@ -119,11 +115,9 @@ class ProviderGHTK(models.Model):
         sender_id = picking.picking_type_id.warehouse_id.partner_id
         payload = {
             'pick_province': sender_id.state_id.name,
-            'pick_district': sender_id.district_id.name,
-            'pick_ward': sender_id.ward_id.name,
+            'pick_ward': sender_id.ward_id._vietnamese_address_name(),
             'customer_province': picking.partner_id.state_id.name,
-            'customer_district': picking.partner_id.district_id.name,
-            'customer_ward': picking.partner_id.ward_id.name,
+            'customer_ward': picking.partner_id.ward_id._vietnamese_address_name(),
             'customer_first_address': picking.partner_id.shipping_address
         }
         return payload

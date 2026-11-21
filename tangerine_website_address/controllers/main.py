@@ -1,52 +1,58 @@
-from odoo import http
+import json
+
+from odoo import _, http
 from odoo.http import request
 from odoo.addons.website_sale.controllers.main import WebsiteSale
 
 
-class WebsiteSaleModesk(WebsiteSale):
+def validate_ward(values, errors, messages):
+    if str(values.get('country_id')) != str(request.env.ref('base.vn').id):
+        values['ward_id'] = False
+        return
+    ward_id = str(values.get('ward_id', ''))
+    ward = request.env['res.country.ward'].sudo().browse(int(ward_id)).exists() if ward_id.isdecimal() else False
+    if not ward or not ward.active or str(ward.state_id.id) != str(values.get('state_id')):
+        errors['ward_id'] = 'error'
+        messages.append(_('Select a ward belonging to the chosen province.'))
+    else:
+        values['ward_id'] = ward.id
+
+
+class WebsiteSaleAddress(WebsiteSale):
+
+    def _vietnam_required_fields(self, fields, country_id):
+        if str(country_id) == str(request.env.ref('base.vn').id):
+            return list(dict.fromkeys([f for f in fields if f != 'city'] + ['state_id', 'ward_id']))
+        return fields
+
+    def _get_mandatory_fields_billing(self, country_id=False):
+        fields = super()._get_mandatory_fields_billing(country_id)
+        return self._vietnam_required_fields(fields, country_id)
 
     def _get_mandatory_fields_shipping(self, country_id=False):
-        req = super(WebsiteSaleModesk, self)._get_mandatory_fields_shipping(country_id)
-        req += ['district_id', 'ward_id']
-        return req
+        fields = super()._get_mandatory_fields_shipping(country_id)
+        return self._vietnam_required_fields(fields, country_id)
 
-    def _get_country_related_render_values(self, kw, render_values):
-        res = super(WebsiteSaleModesk, self)._get_country_related_render_values(kw, render_values)
-        """ Provide the fields related to the country to render the website sale form """
-        values = render_values['checkout']
-        mode = render_values['mode']
-        order = render_values['website_sale_order']
+    @http.route('/shop/vietnam/wards/<int:state_id>', type='http', auth='public', methods=['GET'], website=True)
+    def vietnam_wards(self, state_id):
+        wards = request.env['res.country.ward'].sudo().search([
+            ('state_id', '=', state_id), ('state_id.country_id', '=', request.env.ref('base.vn').id),
+            ('state_id.active', '=', True),
+        ])
+        return request.make_response(
+            json.dumps([(ward.id, ward._vietnamese_address_name()) for ward in wards], ensure_ascii=False),
+            headers=[('Content-Type', 'application/json; charset=utf-8')],
+        )
 
-        def_state_id = order.partner_id.state_id
-        def_district_id = order.partner_id.district_id
-        def_ward_id = order.partner_id.ward_id
+    def values_preprocess(self, *args):
+        values = dict(args[-1])
+        ward_id = str(values.get('ward_id', ''))
+        values['ward_id'] = int(ward_id) if ward_id.isdecimal() else False
+        return super().values_preprocess(*args[:-1], values)
 
-        if res.get('country') and res.get('country').code == 'VN':
-            state = 'state_id' in values and values['state_id'] != '' and request.env['res.country.state'].browse(int(values['state_id']))
-            district = 'district_id' in values and values['district_id'] != '' and request.env['res.country.district'].browse(int(values['district_id']))
-            ward = 'ward_id' in values and values['ward_id'] != '' and request.env['res.country.ward'].browse(int(values['ward_id']))
-
-            state = state and state.exists() or def_state_id
-            district = district and district.exists() or def_district_id
-            ward = ward and ward.exists() or def_ward_id
-
-            res.update({
-                'state': state,
-                'district': district,
-                'state_districts': state.get_website_sale_districts(mode=mode[1]),
-                'ward': ward,
-                'district_wards': district.get_website_sale_wards(mode=mode[1]),
-            })
-        return res
-
-    @http.route('/shop/district_infos/<model("res.country.state"):state>', type='json', auth='public', methods=['POST'], website=True)
-    def district_infos(self, state, mode, **kw):
-        return {
-            'districts': [(d.id, d.name, d.code) for d in state.get_website_sale_districts(mode=mode)]
-        }
-
-    @http.route('/shop/ward_infos/<model("res.country.district"):district>', type='json', auth='public', methods=['POST'], website=True)
-    def ward_infos(self, district, mode, **kw):
-        return {
-            'wards': [(w.id, w.name, w.code) for w in district.get_website_sale_wards(mode=mode)]
-        }
+    def values_postprocess(self, order, mode, values, errors, error_msg):
+        post, errors, error_msg = super().values_postprocess(order, mode, values, errors, error_msg)
+        validate_ward(values, errors, error_msg)
+        post['ward_id'] = values.get('ward_id', False)
+        post.pop('district_id', None)
+        return post, errors, error_msg
