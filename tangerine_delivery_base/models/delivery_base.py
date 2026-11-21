@@ -45,8 +45,6 @@ class DeliveryBase(models.Model):
                 raise ValidationError(_(f'The phone number of {human_id.name} is required'))
             elif not human_id.state_id:
                 raise ValidationError(_(f'The province of {human_id.name} is required'))
-            elif not human_id.district_id:
-                raise ValidationError(_(f'The district of {human_id.name} is required'))
             elif not human_id.ward_id:
                 raise ValidationError(_(f'The ward of {human_id.name} is required'))
             elif not human_id.street:
