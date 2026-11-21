@@ -1,194 +1,245 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-    <data noupdate="1">
-        <record id="base.state_vn_VN-52" model="res.country.state">
-            <field name="code_ext">VN-94</field>
-        </record>
-        <record id="base.state_vn_VN-44" model="res.country.state">
-            <field name="code_ext">VN-89</field>
-        </record>
-        <record id="base.state_vn_VN-24" model="res.country.state">
-            <field name="code_ext">VN-44</field>
-        </record>
-        <record id="base.state_vn_VN-57" model="res.country.state">
-            <field name="code_ext">VN-74</field>
-        </record>
-        <record id="base.state_vn_VN-31" model="res.country.state">
-            <field name="code_ext">VN-52</field>
-        </record>
-        <record id="base.state_vn_VN-54" model="res.country.state">
-            <field name="code_ext">VN-24</field>
-        </record>
-        <record id="base.state_vn_VN-06" model="res.country.state">
-            <field name="code_ext">VN-15</field>
-        </record>
-        <record id="base.state_vn_VN-53" model="res.country.state">
-            <field name="code_ext">VN-06</field>
-        </record>
-        <record id="base.state_vn_VN-55" model="res.country.state">
-            <field name="code_ext">VN-95</field>
-        </record>
-        <record id="base.state_vn_VN-49" model="res.country.state">
-            <field name="code_ext">VN-86</field>
-        </record>
-        <record id="base.state_vn_VN-27" model="res.country.state">
-            <field name="code_ext">VN-49</field>
-        </record>
-        <record id="base.state_vn_VN-46" model="res.country.state">
-            <field name="code_ext">VN-82</field>
-        </record>
-        <record id="base.state_vn_VN-56" model="res.country.state">
-            <field name="code_ext">VN-27</field>
-        </record>
-        <record id="base.state_vn_VN-26" model="res.country.state">
-            <field name="code_ext">VN-46</field>
-        </record>
-        <record id="base.state_vn_VN-70" model="res.country.state">
-            <field name="code_ext">VN-26</field>
-        </record>
-        <record id="base.state_vn_VN-58" model="res.country.state">
-            <field name="code_ext">VN-70</field>
-        </record>
-        <record id="base.state_vn_VN-43" model="res.country.state">
-            <field name="code_ext">VN-77</field>
-        </record>
-        <record id="base.state_vn_VN-40" model="res.country.state">
-            <field name="code_ext">VN-60</field>
-        </record>
-        <record id="base.state_vn_VN-50" model="res.country.state">
-            <field name="code_ext">VN-83</field>
-        </record>
-        <record id="base.state_vn_VN-04" model="res.country.state">
-            <field name="code_ext">VN-04</field>
-        </record>
-        <record id="base.state_vn_VN-59" model="res.country.state">
-            <field name="code_ext">VN-96</field>
-        </record>
-        <record id="base.state_vn_VN-CT" model="res.country.state">
-            <field name="code_ext">VN-92</field>
-        </record>
-        <record id="base.state_vn_VN-71" model="res.country.state">
-            <field name="code_ext">VN-11</field>
-        </record>
-        <record id="base.state_vn_VN-DN" model="res.country.state">
-            <field name="code_ext">VN-48</field>
-        </record>
-        <record id="base.state_vn_VN-39" model="res.country.state">
-            <field name="code_ext">VN-75</field>
-        </record>
-        <record id="base.state_vn_VN-36" model="res.country.state">
-            <field name="code_ext">VN-58</field>
-        </record>
-        <record id="base.state_vn_VN-67" model="res.country.state">
-            <field name="code_ext">VN-36</field>
-        </record>
-        <record id="base.state_vn_VN-72" model="res.country.state">
-            <field name="code_ext">VN-67</field>
-        </record>
-        <record id="base.state_vn_VN-45" model="res.country.state">
-            <field name="code_ext">VN-87</field>
-        </record>
-        <record id="base.state_vn_VN-30" model="res.country.state">
-            <field name="code_ext">VN-64</field>
-        </record>
-        <record id="base.state_vn_VN-14" model="res.country.state">
-            <field name="code_ext">VN-17</field>
-        </record>
-        <record id="base.state_vn_VN-SG" model="res.country.state">
-            <field name="code_ext">VN-79</field>
-        </record>
-        <record id="base.state_vn_VN-61" model="res.country.state">
-            <field name="code_ext">VN-30</field>
-        </record>
-        <record id="base.state_vn_VN-73" model="res.country.state">
-            <field name="code_ext">VN-93</field>
-        </record>
-        <record id="base.state_vn_VN-02" model="res.country.state">
-            <field name="code_ext">VN-10</field>
-        </record>
-        <record id="base.state_vn_VN-03" model="res.country.state">
-            <field name="code_ext">VN-02</field>
-        </record>
-        <record id="base.state_vn_VN-01" model="res.country.state">
-            <field name="code_ext">VN-12</field>
-        </record>
-        <record id="base.state_vn_VN-HN" model="res.country.state">
-            <field name="code_ext">VN-01</field>
-        </record>
-        <record id="base.state_vn_VN-25" model="res.country.state">
-            <field name="code_ext">VN-45</field>
-        </record>
-        <record id="base.state_vn_VN-68" model="res.country.state">
-            <field name="code_ext">VN-25</field>
-        </record>
-        <record id="base.state_vn_VN-35" model="res.country.state">
-            <field name="code_ext">VN-68</field>
-        </record>
-        <record id="base.state_vn_VN-63" model="res.country.state">
-            <field name="code_ext">VN-35</field>
-        </record>
-        <record id="base.state_vn_VN-HP" model="res.country.state">
-            <field name="code_ext">VN-31</field>
-        </record>
-        <record id="base.state_vn_VN-23" model="res.country.state">
-            <field name="code_ext">VN-42</field>
-        </record>
-        <record id="base.state_vn_VN-47" model="res.country.state">
-            <field name="code_ext">VN-91</field>
-        </record>
-        <record id="base.state_vn_VN-34" model="res.country.state">
-            <field name="code_ext">VN-56</field>
-        </record>
-        <record id="base.state_vn_VN-28" model="res.country.state">
-            <field name="code_ext">VN-62</field>
-        </record>
-        <record id="base.state_vn_VN-41" model="res.country.state">
-            <field name="code_ext">VN-80</field>
-        </record>
-        <record id="base.state_vn_VN-20" model="res.country.state">
-            <field name="code_ext">VN-34</field>
-        </record>
-        <record id="base.state_vn_VN-09" model="res.country.state">
-            <field name="code_ext">VN-20</field>
-        </record>
-        <record id="base.state_vn_VN-22" model="res.country.state">
-            <field name="code_ext">VN-40</field>
-        </record>
-        <record id="base.state_vn_VN-37" model="res.country.state">
-            <field name="code_ext">VN-72</field>
-        </record>
-        <record id="base.state_vn_VN-18" model="res.country.state">
-            <field name="code_ext">VN-37</field>
-        </record>
-        <record id="base.state_vn_VN-32" model="res.country.state">
-            <field name="code_ext">VN-54</field>
-        </record>
-        <record id="base.state_vn_VN-13" model="res.country.state">
-            <field name="code_ext">VN-22</field>
-        </record>
-        <record id="base.state_vn_VN-51" model="res.country.state">
-            <field name="code_ext">VN-84</field>
-        </record>
-        <record id="base.state_vn_VN-29" model="res.country.state">
-            <field name="code_ext">VN-51</field>
-        </record>
-        <record id="base.state_vn_VN-05" model="res.country.state">
-            <field name="code_ext">VN-14</field>
-        </record>
-        <record id="base.state_vn_VN-21" model="res.country.state">
-            <field name="code_ext">VN-38</field>
-        </record>
-        <record id="base.state_vn_VN-69" model="res.country.state">
-            <field name="code_ext">VN-19</field>
-        </record>
-        <record id="base.state_vn_VN-07" model="res.country.state">
-            <field name="code_ext">VN-08</field>
-        </record>
-        <record id="base.state_vn_VN-66" model="res.country.state">
-            <field name="code_ext">VN-33</field>
-        </record>
-        <record id="base.state_vn_VN-33" model="res.country.state">
-            <field name="code_ext">VN-66</field>
-        </record>
-    </data>
+    <record id="base.state_vn_VN-HN" model="res.country.state">
+        <field name="external_code">01</field>
+        <field name="code_ext">VN-01</field>
+        <field name="name">Hà Nội</field>
+        <field name="state_type">capital</field>
+    </record>
+
+    <record id="base.state_vn_VN-04" model="res.country.state">
+        <field name="external_code">04</field>
+        <field name="code_ext">VN-04</field>
+        <field name="name">Cao Bằng</field>
+        <field name="state_type">province</field>
+    </record>
+
+    <record id="base.state_vn_VN-07" model="res.country.state">
+        <field name="external_code">08</field>
+        <field name="code_ext">VN-08</field>
+        <field name="name">Tuyên Quang</field>
+        <field name="state_type">province</field>
+    </record>
+
+    <record id="base.state_vn_VN-71" model="res.country.state">
+        <field name="external_code">11</field>
+        <field name="code_ext">VN-11</field>
+        <field name="name">Điện Biên</field>
+        <field name="state_type">province</field>
+    </record>
+
+    <record id="base.state_vn_VN-01" model="res.country.state">
+        <field name="external_code">12</field>
+        <field name="code_ext">VN-12</field>
+        <field name="name">Lai Châu</field>
+        <field name="state_type">province</field>
+    </record>
+
+    <record id="base.state_vn_VN-05" model="res.country.state">
+        <field name="external_code">14</field>
+        <field name="code_ext">VN-14</field>
+        <field name="name">Sơn La</field>
+        <field name="state_type">province</field>
+    </record>
+
+    <record id="base.state_vn_VN-02" model="res.country.state">
+        <field name="external_code">15</field>
+        <field name="code_ext">VN-15</field>
+        <field name="name">Lào Cai</field>
+        <field name="state_type">province</field>
+    </record>
+
+    <record id="base.state_vn_VN-69" model="res.country.state">
+        <field name="external_code">19</field>
+        <field name="code_ext">VN-19</field>
+        <field name="name">Thái Nguyên</field>
+        <field name="state_type">province</field>
+    </record>
+
+    <record id="base.state_vn_VN-09" model="res.country.state">
+        <field name="external_code">20</field>
+        <field name="code_ext">VN-20</field>
+        <field name="name">Lạng Sơn</field>
+        <field name="state_type">province</field>
+    </record>
+
+    <record id="base.state_vn_VN-13" model="res.country.state">
+        <field name="external_code">22</field>
+        <field name="code_ext">VN-22</field>
+        <field name="name">Quảng Ninh</field>
+        <field name="state_type">city</field>
+    </record>
+
+    <record id="base.state_vn_VN-56" model="res.country.state">
+        <field name="external_code">24</field>
+        <field name="code_ext">VN-24</field>
+        <field name="name">Bắc Ninh</field>
+        <field name="state_type">city</field>
+    </record>
+
+    <record id="base.state_vn_VN-68" model="res.country.state">
+        <field name="external_code">25</field>
+        <field name="code_ext">VN-25</field>
+        <field name="name">Phú Thọ</field>
+        <field name="state_type">province</field>
+    </record>
+
+    <record id="base.state_vn_VN-HP" model="res.country.state">
+        <field name="external_code">31</field>
+        <field name="code_ext">VN-31</field>
+        <field name="name">Hải Phòng</field>
+        <field name="state_type">city</field>
+    </record>
+
+    <record id="base.state_vn_VN-66" model="res.country.state">
+        <field name="external_code">33</field>
+        <field name="code_ext">VN-33</field>
+        <field name="name">Hưng Yên</field>
+        <field name="state_type">province</field>
+    </record>
+
+    <record id="base.state_vn_VN-18" model="res.country.state">
+        <field name="external_code">37</field>
+        <field name="code_ext">VN-37</field>
+        <field name="name">Ninh Bình</field>
+        <field name="state_type">province</field>
+    </record>
+
+    <record id="base.state_vn_VN-21" model="res.country.state">
+        <field name="external_code">38</field>
+        <field name="code_ext">VN-38</field>
+        <field name="name">Thanh Hóa</field>
+        <field name="state_type">province</field>
+    </record>
+
+    <record id="base.state_vn_VN-22" model="res.country.state">
+        <field name="external_code">40</field>
+        <field name="code_ext">VN-40</field>
+        <field name="name">Nghệ An</field>
+        <field name="state_type">province</field>
+    </record>
+
+    <record id="base.state_vn_VN-23" model="res.country.state">
+        <field name="external_code">42</field>
+        <field name="code_ext">VN-42</field>
+        <field name="name">Hà Tĩnh</field>
+        <field name="state_type">province</field>
+    </record>
+
+    <record id="base.state_vn_VN-25" model="res.country.state">
+        <field name="external_code">44</field>
+        <field name="code_ext">VN-44</field>
+        <field name="name">Quảng Trị</field>
+        <field name="state_type">province</field>
+    </record>
+
+    <record id="base.state_vn_VN-26" model="res.country.state">
+        <field name="external_code">46</field>
+        <field name="code_ext">VN-46</field>
+        <field name="name">Huế</field>
+        <field name="state_type">city</field>
+    </record>
+
+    <record id="base.state_vn_VN-DN" model="res.country.state">
+        <field name="external_code">48</field>
+        <field name="code_ext">VN-48</field>
+        <field name="name">Đà Nẵng</field>
+        <field name="state_type">city</field>
+    </record>
+
+    <record id="base.state_vn_VN-29" model="res.country.state">
+        <field name="external_code">51</field>
+        <field name="code_ext">VN-51</field>
+        <field name="name">Quảng Ngãi</field>
+        <field name="state_type">province</field>
+    </record>
+
+    <record id="base.state_vn_VN-30" model="res.country.state">
+        <field name="external_code">52</field>
+        <field name="code_ext">VN-52</field>
+        <field name="name">Gia Lai</field>
+        <field name="state_type">province</field>
+    </record>
+
+    <record id="base.state_vn_VN-34" model="res.country.state">
+        <field name="external_code">56</field>
+        <field name="code_ext">VN-56</field>
+        <field name="name">Khánh Hòa</field>
+        <field name="state_type">province</field>
+    </record>
+
+    <record id="base.state_vn_VN-33" model="res.country.state">
+        <field name="external_code">66</field>
+        <field name="code_ext">VN-66</field>
+        <field name="name">Đắk Lắk</field>
+        <field name="state_type">province</field>
+    </record>
+
+    <record id="base.state_vn_VN-35" model="res.country.state">
+        <field name="external_code">68</field>
+        <field name="code_ext">VN-68</field>
+        <field name="name">Lâm Đồng</field>
+        <field name="state_type">province</field>
+    </record>
+
+    <record id="base.state_vn_VN-39" model="res.country.state">
+        <field name="external_code">75</field>
+        <field name="code_ext">VN-75</field>
+        <field name="name">Đồng Nai</field>
+        <field name="state_type">city</field>
+    </record>
+
+    <record id="base.state_vn_VN-SG" model="res.country.state">
+        <field name="external_code">79</field>
+        <field name="code_ext">VN-79</field>
+        <field name="name">Hồ Chí Minh</field>
+        <field name="state_type">city</field>
+    </record>
+
+    <record id="base.state_vn_VN-37" model="res.country.state">
+        <field name="external_code">80</field>
+        <field name="code_ext">VN-80</field>
+        <field name="name">Tây Ninh</field>
+        <field name="state_type">province</field>
+    </record>
+
+    <record id="base.state_vn_VN-45" model="res.country.state">
+        <field name="external_code">82</field>
+        <field name="code_ext">VN-82</field>
+        <field name="name">Đồng Tháp</field>
+        <field name="state_type">province</field>
+    </record>
+
+    <record id="base.state_vn_VN-49" model="res.country.state">
+        <field name="external_code">86</field>
+        <field name="code_ext">VN-86</field>
+        <field name="name">Vĩnh Long</field>
+        <field name="state_type">province</field>
+    </record>
+
+    <record id="base.state_vn_VN-44" model="res.country.state">
+        <field name="external_code">91</field>
+        <field name="code_ext">VN-91</field>
+        <field name="name">An Giang</field>
+        <field name="state_type">province</field>
+    </record>
+
+    <record id="base.state_vn_VN-CT" model="res.country.state">
+        <field name="external_code">92</field>
+        <field name="code_ext">VN-92</field>
+        <field name="name">Cần Thơ</field>
+        <field name="state_type">city</field>
+    </record>
+
+    <record id="base.state_vn_VN-59" model="res.country.state">
+        <field name="external_code">96</field>
+        <field name="code_ext">VN-96</field>
+        <field name="name">Cà Mau</field>
+        <field name="state_type">province</field>
+    </record>
+
+    <!-- Some installations still have all 63 historical provinces. -->
+    <function model="res.country.state" name="_archive_merged_vietnam_states">
+        <value eval="['VN-03', 'VN-06', 'VN-14', 'VN-20', 'VN-24', 'VN-27', 'VN-28', 'VN-31', 'VN-32', 'VN-36', 'VN-40', 'VN-41', 'VN-43', 'VN-46', 'VN-47', 'VN-50', 'VN-51', 'VN-52', 'VN-53', 'VN-54', 'VN-55', 'VN-57', 'VN-58', 'VN-61', 'VN-63', 'VN-67', 'VN-70', 'VN-72', 'VN-73']"/>
+    </function>
 </odoo>

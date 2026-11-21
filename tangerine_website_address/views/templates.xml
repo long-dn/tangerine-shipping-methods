@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="vietnam_ward_field">
+        <div class="col-lg-6 mb-2" data-vietnam-ward="" t-att-data-country="request.env.ref('base.vn').id"
+             t-att-data-selected="selected_ward or ''" hidden="hidden">
+            <label for="vn_ward_id">Phường / Xã / Đặc khu</label>
+            <select id="vn_ward_id" name="ward_id" class="form-control" t-att-class="'is-invalid' if error.get('ward_id') else ''">
+                <option value="">Chọn phường, xã hoặc đặc khu</option>
+            </select>
+        </div>
+    </template>
+    <template id="address" inherit_id="website_sale.address">
+        <xpath expr="//select[@name='state_id']/.." position="after">
+            <t t-call="tangerine_website_address.vietnam_ward_field">
+                <t t-set="selected_ward" t-value="checkout.get('ward_id') if isinstance(checkout, dict) else checkout.ward_id.id"/>
+            </t>
+        </xpath>
+    </template>
+    <template id="portal_my_details_fields" inherit_id="portal.portal_my_details">
+        <xpath expr="//select[@name='state_id']/.." position="after">
+            <t t-call="tangerine_website_address.vietnam_ward_field">
+                <t t-set="selected_ward" t-value="ward_id or partner.ward_id.id"/>
+            </t>
+        </xpath>
+    </template>
+</odoo>
