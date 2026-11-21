@@ -7,9 +7,7 @@
             <tree string="Ward" editable="top">
                 <field name="name"/>
                 <field name="code"/>
-                <field name="slug"/>
-                <field name="type" />
-                <field name="district_id" options="{'no_open': True, 'no_create': True}"/>
+                <field name="ward_type" />
                 <field name="state_id" />
                 <field name="country_id" options="{'no_open': True, 'no_create': True}"/>
             </tree>
@@ -23,7 +21,6 @@
             <search>
                 <field name="name"/>
                 <field name="code"/>
-                <field name="district_id"/>
                 <field name="state_id"/>
             </search>
         </field>
