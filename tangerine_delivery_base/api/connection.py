@@ -28,8 +28,8 @@ class Connection:
     def execute_restful(self, url, method, headers, **kwargs):
         try:
             _logger.warning(
-                '[%s] - [EXECUTE API]: %s: %s - Header: %s - Body: %s',
-                self.provider.delivery_type.upper(), method, url, headers, kwargs,
+                '[%s] - [EXECUTE API]: %s: %s - Body: %s',
+                self.provider.delivery_type.upper(), method, url, kwargs,
             )
             request_func = _METHOD_DISPATCH.get(method)
             if not request_func:

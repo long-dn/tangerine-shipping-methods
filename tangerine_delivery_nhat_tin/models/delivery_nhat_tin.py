@@ -26,19 +26,23 @@ class ProviderNhatTinLogistics(models.Model):
     default_ntl_cargo_type = fields.Selection(selection=settings.cargo_type.value, string='Cargo Type')
     default_ntl_payment_method = fields.Selection(selection=settings.payment_method.value, string='Payment Method')
 
+    @staticmethod
+    def _nhat_tin_location(partner, prefix, suffix):
+        ward = partner.ward_id
+        state = partner.state_id
+        if (not state.external_code or not ward.active or not ward.code
+                or ward.state_id != state or state.country_id.code != 'VN'):
+            raise ValidationError(_('Select a current Vietnamese province and ward for %s.') % partner.display_name)
+        return {
+            f'{prefix}_province_{suffix}': state.external_code,
+            f'{prefix}_ward_{suffix}': ward.code,
+        }
+
     def _nhat_tin_payload_calculate_price(self, order):
         if not order.env.context.get('ntl_service_type'):
             raise ValidationError(_('The field service type is required.'))
         elif not order.env.context.get('ntl_payment_method'):
             raise ValidationError(_('The field payment method is required.'))
-        elif not order.warehouse_id.partner_id.state_id:
-            raise ValidationError(_('The field sender province is required.'))
-        elif not order.warehouse_id.partner_id.district_id:
-            raise ValidationError(_('The field sender district is required.'))
-        elif not order.partner_shipping_id.state_id:
-            raise ValidationError(_('The field receiver province is required.'))
-        elif not order.partner_shipping_id.district_id:
-            raise ValidationError(_('The field receiver district is required.'))
         elif not self.ntl_partner_id:
             raise ValidationError(_('The field partner ID is required.'))
         weight = order._get_estimated_weight() or self.env.context.get('order_weight')
@@ -47,10 +51,8 @@ class ProviderNhatTinLogistics(models.Model):
             'weight': math.ceil(order.carrier_id.convert_weight(weight, self.base_weight_unit)),
             'service_id': int(order.env.context.get('ntl_service_type')),
             'payment_method_id': int(order.env.context.get('ntl_payment_method')),
-            's_province': order.warehouse_id.partner_id.state_id.name,
-            's_district': order.warehouse_id.partner_id.district_id.name,
-            'r_province': order.partner_shipping_id.state_id.name,
-            'r_district': order.partner_shipping_id.district_id.name,
+            **self._nhat_tin_location(order.warehouse_id.partner_id, 's', 'id'),
+            **self._nhat_tin_location(order.partner_shipping_id, 'r', 'id'),
             'cargo_value': self.env.context.get('ntl_cargo_value'),
         }
         if self.env.context.get('ntl_cod') and self.env.context.get('ntl_cod_amount', 0) > 0:
@@ -91,15 +93,11 @@ class ProviderNhatTinLogistics(models.Model):
             's_name': sender_id.name,
             's_phone': standardization_e164(sender_id.phone),
             's_address': sender_id.shipping_address,
-            's_ward_name': sender_id.ward_id.name,
-            's_district_name': sender_id.district_id.name,
-            's_province_name':sender_id.state_id.name,
+            **self._nhat_tin_location(sender_id, 's', 'code'),
             'r_name': recipient_id.name,
             'r_phone': standardization_e164(recipient_id.phone),
             'r_address': recipient_id.shipping_address,
-            'r_ward_name': recipient_id.ward_id.name,
-            'r_district_name': recipient_id.district_id.name,
-            'r_province_name': recipient_id.state_id.name
+            **self._nhat_tin_location(recipient_id, 'r', 'code'),
         }
         if picking.cash_on_delivery and picking.cash_on_delivery_amount > 0.0:
             payload['cod_amount'] = picking.cash_on_delivery_amount

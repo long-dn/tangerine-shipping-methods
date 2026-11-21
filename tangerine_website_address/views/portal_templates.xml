@@ -14,7 +14,7 @@
                         t-as="w"
                         t-att-value="w.id"
                         t-att-selected="partner_sudo and w.id == partner_sudo.ward_id.id"
-                        t-out="w.name"
+                        t-out="w._vietnamese_address_name()"
                     />
                 </select>
             </div>

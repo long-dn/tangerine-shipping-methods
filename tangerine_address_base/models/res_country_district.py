@@ -6,6 +6,7 @@ class District(models.Model):
     _description = 'District'
     _order = 'code'
 
+    active = fields.Boolean(default=True)
     name = fields.Char('District name')
     code = fields.Char(string='Code', required=True)
     slug = fields.Char(string='Slug')

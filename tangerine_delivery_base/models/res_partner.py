@@ -21,7 +21,7 @@ class ResPartner(models.Model):
             if rec.country_id and rec.country_id.code == 'VN':
                 address_parts = [
                     rec.street,
-                    rec.ward_id.name,
+                    rec.ward_id._vietnamese_address_name(),
                     rec.state_id.name,
                     rec.country_id.name
                 ]

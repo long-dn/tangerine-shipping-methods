@@ -23,11 +23,17 @@ patch(CustomerAddress.prototype, {
             return;
         }
         const stateId = parseInt(this.addressForm.state_id.value);
+        const selected = this.addressForm.ward_id.value;
         let wards = [];
         if (this._getSelectedCountryCode() === "VN" && stateId) {
             const data = await this.waitFor(rpc(`/my/address/state_vn_info/${stateId}`, {}));
+            if (parseInt(this.addressForm.state_id.value) !== stateId || this._getSelectedCountryCode() !== "VN") return;
             wards = data.wards;
         }
         this._setFieldChoices("ward_id", wards);
+        this.addressForm.ward_id.disabled = !wards.length;
+        if (wards.some((ward) => String(ward.id) === selected)) {
+            this.addressForm.ward_id.value = selected;
+        }
     },
 });

@@ -69,8 +69,7 @@ class ProviderViettelpost(models.Model):
             raise ValidationError(_('The field service type is required'))
         return {
             'ToProvinceName': order.partner_shipping_id.state_id.name,
-            'ToDistrictName': order.partner_shipping_id.district_id.name,
-            'ToWardName': order.partner_shipping_id.ward_id.name,
+            'ToWardName': order.partner_shipping_id.ward_id._vietnamese_address_name(),
             'Length': 0,
             'Width': 0,
             'Height': 0,
@@ -101,8 +100,7 @@ class ProviderViettelpost(models.Model):
                 'ReceiverName': picking.partner_id.name,
                 'ReceiverAddress': picking.partner_id.shipping_address,
                 'ReceiverProvinceName': picking.partner_id.state_id.name,
-                'ReceiverDistrictName': picking.partner_id.district_id.name,
-                'ReceiverWardName': picking.partner_id.ward_id.name,
+                'ReceiverWardName': picking.partner_id.ward_id._vietnamese_address_name(),
                 'Length': 0,
                 'Width': 0,
                 'Height': 0,
